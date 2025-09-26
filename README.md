@@ -4,7 +4,7 @@ This document should provide a brief outline and direction for your game to get 
 For each of these provide at least a short paragraph describing each, unless otherwise noted:
 
 ## Vision Statement
-	Our game places the player in the role of a black ant trying to survive in a dangerous environment filled with enemies and natural hazards. The vision is to create an adventurous and immersive experience where the player feels the challenges of being small and unfamiliar big world. 
+Our game places the player in the role of a black ant trying to survive in a dangerous environment filled with enemies and natural hazards. The vision is to create an adventurous and immersive experience where the player feels the challenges of being small and unfamiliar big world. 
 
 ## Gameplay 
 ### Mechanics
