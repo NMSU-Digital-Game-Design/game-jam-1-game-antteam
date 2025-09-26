@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://8dxuyy0anv4e"]
+
+[ext_resource type="Script" uid="uid://b0js15j0pl5bd" path="res://hud.gd" id="1_37p78"]
+[ext_resource type="PackedScene" uid="uid://cb20bndlexj0i" path="res://player/lives_container.tscn" id="2_64ctp"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_37p78")
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "Score: "
+
+[node name="LivesContainer" parent="." instance=ExtResource("2_64ctp")]
+layout_mode = 0

@@ -1,9 +1,35 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxomqc3r7fk8o"]
+[gd_scene load_steps=16 format=3 uid="uid://cxomqc3r7fk8o"]
 
+[ext_resource type="Script" uid="uid://c1bdn025qdkkv" path="res://playground-test/playground.gd" id="1_ac5cj"]
 [ext_resource type="Texture2D" uid="uid://ych00ecbee56" path="res://playground-test/assets/Terrain (32x32).png" id="1_is3ju"]
+[ext_resource type="Texture2D" uid="uid://dq1epr7xvq8ci" path="res://playground-test/assets/assets.png" id="1_w2dbe"]
 [ext_resource type="Texture2D" uid="uid://d31l5cufjgxp8" path="res://playground-test/assets/Front Palm Bottom and Grass (32x32).png" id="2_o00ia"]
 [ext_resource type="Texture2D" uid="uid://cn1lmjpjlpj7j" path="res://playground-test/assets/Front Palm Tree Top 01.png" id="3_4bqqs"]
 [ext_resource type="Texture2D" uid="uid://drbbolwmg70yb" path="res://playground-test/assets/1.png" id="4_ynsuh"]
+[ext_resource type="PackedScene" uid="uid://cj1r6c4xwhgxu" path="res://pick-ups/sugar_cube.tscn" id="6_ac5cj"]
+[ext_resource type="PackedScene" uid="uid://c4mud5gjub0mh" path="res://playground-test/spikes.tscn" id="8_cn5ks"]
+[ext_resource type="PackedScene" uid="uid://dukima5ha1ptt" path="res://pick-ups/apple_slice.tscn" id="9_sv118"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cn5ks"]
+texture = ExtResource("1_w2dbe")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+6:4/0 = 0
+7:4/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v7dth"]
 texture = ExtResource("1_is3ju")
@@ -137,11 +163,54 @@ sources/1 = SubResource("TileSetAtlasSource_v7dth")
 sources/2 = SubResource("TileSetAtlasSource_pi42a")
 sources/3 = SubResource("TileSetAtlasSource_h1jm5")
 sources/4 = SubResource("TileSetAtlasSource_pio1y")
+sources/0 = SubResource("TileSetAtlasSource_cn5ks")
 
 [node name="Playground" type="Node2D"]
+script = ExtResource("1_ac5cj")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
 tile_set = SubResource("TileSet_te8jg")
 format = 2
 layer_0/tile_data = PackedInt32Array(393217, 65537, 0, 393218, 65537, 0, 393219, 589825, 3, 393220, 65537, 0, 393221, 131073, 0, 393222, 1, 0, 393223, 65537, 0, 393224, 131073, 0, 393225, 65537, 0, 393226, 1, 0, 393227, 65537, 0, 393228, 65537, 0, 393229, 65537, 0, 393230, 589825, 3, 393231, 131073, 0, 393232, 131073, 0, 393233, 65537, 0, 393234, 131073, 0, 393235, 131073, 0, 393236, 589825, 3, 393237, 1, 0, 393238, 589825, 3, 393239, 131073, 0, 393240, 1, 0, 393241, 589825, 3, 393242, 655361, 3, 393243, 589825, 3, 393244, 131073, 0, 393245, 589825, 3, 393246, 131073, 0, 393247, 589825, 3, 393248, 655361, 3, 393249, 131073, 0, 393250, 131073, 0, 327702, 2, 0, 262166, 2, 0, 196630, 2, 0, 131094, 3, 0, 393251, 65540, 0, 393252, 131076, 0, 393253, 131076, 0, 393254, 65540, 0, 393255, 131076, 0, 393256, 65540, 0, 393257, 131076, 0, 65553, 983041, 3, 65554, 131073, 4, -131061, 262145, 0, -65525, 262145, 1, 11, 262145, 2, -393199, 262145, 0, -327663, 262145, 1, -262127, 262145, 2, -589813, 262145, 0, -524277, 262145, 1, -458741, 262145, 2)
+
+[node name="Hazards" type="Node" parent="."]
+
+[node name="SPIKES" parent="Hazards" instance=ExtResource("8_cn5ks")]
+position = Vector2(936, 193)
+
+[node name="Food" type="Node" parent="."]
+
+[node name="SugarCubes" type="Node" parent="Food"]
+
+[node name="SugarCube" parent="Food/SugarCubes" instance=ExtResource("6_ac5cj")]
+position = Vector2(710, 27)
+
+[node name="SugarCube2" parent="Food/SugarCubes" instance=ExtResource("6_ac5cj")]
+position = Vector2(563, -12)
+
+[node name="SugarCube3" parent="Food/SugarCubes" instance=ExtResource("6_ac5cj")]
+position = Vector2(1079, 152)
+
+[node name="SugarCube4" parent="Food/SugarCubes" instance=ExtResource("6_ac5cj")]
+position = Vector2(286, 151)
+
+[node name="SugarCube5" parent="Food/SugarCubes" instance=ExtResource("6_ac5cj")]
+position = Vector2(397, -64)
+
+[node name="SugarCube6" parent="Food/SugarCubes" instance=ExtResource("6_ac5cj")]
+position = Vector2(510, -175)
+
+[node name="SugarCube7" parent="Food/SugarCubes" instance=ExtResource("6_ac5cj")]
+position = Vector2(391, -284)
+
+[node name="SugarCube8" parent="Food/SugarCubes" instance=ExtResource("6_ac5cj")]
+position = Vector2(286, -344)
+
+[node name="SugarCube9" parent="Food/SugarCubes" instance=ExtResource("6_ac5cj")]
+position = Vector2(534, 155)
+
+[node name="AppleSlices" type="Node" parent="Food"]
+
+[node name="AppleSlice" parent="Food/AppleSlices" instance=ExtResource("9_sv118")]
+position = Vector2(516, -350)
