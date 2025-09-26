@@ -1,3 +1,13 @@
-[gd_scene format=3 uid="uid://dw7mdhopeau5k"]
+[gd_scene load_steps=3 format=3 uid="uid://dw7mdhopeau5k"]
+
+[ext_resource type="PackedScene" uid="uid://cxomqc3r7fk8o" path="res://playground-test/playground.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cdx5umep5ftjn" path="res://player/player.tscn" id="2_h2yge"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Playground" parent="." instance=ExtResource("1_0xm2m")]
+
+[node name="Player" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(314, 143)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
