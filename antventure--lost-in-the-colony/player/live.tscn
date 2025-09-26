@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cakcy218yyc58"]
+
+[ext_resource type="Texture2D" uid="uid://ct5iljwod78ih" path="res://player/assets/heart-sprite-full-health.png" id="1_u0q7r"]
+
+[node name="LiveGUI" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 14)
+anchors_preset = -1
+offset_right = 16.0
+offset_bottom = 14.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 7)
+texture = ExtResource("1_u0q7r")

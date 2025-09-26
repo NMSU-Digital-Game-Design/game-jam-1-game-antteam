@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+signal out_of_lives
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -50,3 +50,13 @@ func _physics_process(delta: float) -> void:
 
 func jump():
 	return JUMP_VELOCITY
+	
+##### Damage #####
+
+func hurt(dmg: int):
+	var health = GvPlayer.player_health
+	health -= 1
+	if health == 0:
+		out_of_lives.emit()
+	GvPlayer.player_health = health
+	print("Hit!")
