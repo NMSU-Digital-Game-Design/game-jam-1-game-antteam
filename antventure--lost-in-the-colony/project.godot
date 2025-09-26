@@ -15,6 +15,10 @@ run/main_scene="uid://dw7mdhopeau5k"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GvPlayer="*res://Global_Variables/GV_Player.gd"
+
 [input]
 
 left={
