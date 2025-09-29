@@ -5,7 +5,6 @@
 [node name="LiveGUI" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(16, 14)
-anchors_preset = -1
 offset_right = 16.0
 offset_bottom = 14.0
 
