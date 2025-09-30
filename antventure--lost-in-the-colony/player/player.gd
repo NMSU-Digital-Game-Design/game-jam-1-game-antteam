@@ -7,6 +7,33 @@ const JUMP_VELOCITY = -400.0
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
+	#Animation for player
+	#var velocity = Vector2() #spawns correctly and does show dirctional change, no movement
+	if Input.is_action_pressed("right"):
+		velocity.x += 1
+	if Input.is_action_pressed("left"):
+		velocity.x -= 1
+	if Input.is_action_pressed("down"):
+		velocity.y += 1
+	if Input.is_action_pressed("up"):
+		velocity.y -= 1
+	
+	#player animations
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * SPEED
+		$AnimatedSprite2D.play()
+	else:
+		$AnimatedSprite2D.stop()
+		
+	if velocity.x != 0:
+		$AnimatedSprite2D.animation = "right"
+		$AnimatedSprite2D.flip_v = false
+		$AnimatedSprite2D.flip_h = velocity.x < 0
+	elif velocity.y != 0:
+		$AnimatedSprite2D.animation = "up"
+		$AnimatedSprite2D.flip_v = velocity.y > 0
+
+	
 	
 	# adds wall climb mechanic
 	if is_on_wall():
@@ -34,6 +61,7 @@ func _physics_process(delta: float) -> void:
 		# Handle jump.
 		if Input.is_action_pressed("jump") and is_on_floor():
 			velocity.y = jump()
+			
 
 
 		# Get the input direction and handle the movement/deceleration.
