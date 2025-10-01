@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cxomqc3r7fk8o"]
+[gd_scene load_steps=17 format=3 uid="uid://cxomqc3r7fk8o"]
 
 [ext_resource type="Script" uid="uid://c1bdn025qdkkv" path="res://playground-test/playground.gd" id="1_ac5cj"]
 [ext_resource type="Texture2D" uid="uid://ych00ecbee56" path="res://playground-test/assets/Terrain (32x32).png" id="1_is3ju"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cj1r6c4xwhgxu" path="res://pick-ups/sugar_cube.tscn" id="6_ac5cj"]
 [ext_resource type="PackedScene" uid="uid://c4mud5gjub0mh" path="res://playground-test/spikes.tscn" id="8_cn5ks"]
 [ext_resource type="PackedScene" uid="uid://dukima5ha1ptt" path="res://pick-ups/apple_slice.tscn" id="9_sv118"]
+[ext_resource type="PackedScene" uid="uid://b6de3i6aiyjag" path="res://RedAnt/red_ant.tscn" id="10_ijab2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cn5ks"]
 texture = ExtResource("1_w2dbe")
@@ -214,3 +215,6 @@ position = Vector2(534, 155)
 
 [node name="AppleSlice" parent="Food/AppleSlices" instance=ExtResource("9_sv118")]
 position = Vector2(516, -350)
+
+[node name="RedAnt" parent="." instance=ExtResource("10_ijab2")]
+position = Vector2(320, -64)
