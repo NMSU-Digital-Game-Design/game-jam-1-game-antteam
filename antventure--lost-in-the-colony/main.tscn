@@ -1,90 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://dw7mdhopeau5k"]
+[gd_scene load_steps=6 format=3 uid="uid://dw7mdhopeau5k"]
 
 [ext_resource type="PackedScene" uid="uid://cxomqc3r7fk8o" path="res://playground-test/playground.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://bjxx47m5864iy" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cdx5umep5ftjn" path="res://player/player.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://8dxuyy0anv4e" path="res://hud.tscn" id="3_h2yge"]
-[ext_resource type="Texture2D" uid="uid://bwpokouqtspwg" path="res://player/mob asset sheet/mob.png" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://c1sfgl0qrcsxq" path="res://backgrounds/nature-sky-bkg.png" id="6_7mycd"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
-atlas = ExtResource("5_lquwl")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_272bh"]
-atlas = ExtResource("5_lquwl")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
-atlas = ExtResource("5_lquwl")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
-atlas = ExtResource("5_lquwl")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w48qg"]
-atlas = ExtResource("5_lquwl")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vivmo"]
-atlas = ExtResource("5_lquwl")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_82xsv"]
-atlas = ExtResource("5_lquwl")
-region = Rect2(384, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_getpj"]
-atlas = ExtResource("5_lquwl")
-region = Rect2(416, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ryguw"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7mycd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_272bh")
-}],
-"loop": true,
-"name": &"cealing_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5vw27")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kek77")
-}],
-"loop": true,
-"name": &"cealing_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w48qg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vivmo")
-}],
-"loop": true,
-"name": &"right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_82xsv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_getpj")
-}],
-"loop": true,
-"name": &"up",
-"speed": 5.0
-}]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1bvp3")
@@ -97,16 +17,9 @@ script = ExtResource("1_1bvp3")
 
 [node name="Player" parent="." instance=ExtResource("2_h2yge")]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 1)
 position = Vector2(64, 179)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-position = Vector2(-1.97476, -56.7228)
-scale = Vector2(4.21259, 8.82698)
-sprite_frames = SubResource("SpriteFrames_ryguw")
-animation = &"right"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -115,8 +28,8 @@ motion_scale = Vector2(0.5, 1)
 motion_mirroring = Vector2(2500, 0)
 
 [node name="Nature-sky-bkg" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(355, -234)
-scale = Vector2(1.875, 1.875)
+position = Vector2(355, 37)
+scale = Vector2(1.875, 1.87179)
 texture = ExtResource("6_7mycd")
 
 [node name="Nature-sky-bkg2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
