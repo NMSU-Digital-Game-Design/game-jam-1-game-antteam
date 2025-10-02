@@ -9,7 +9,7 @@ size = Vector2(64, 42)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6gnh"]
 size = Vector2(56, 36)
 
-[node name="RedAnt" type="Area2D"]
+[node name="RedAnt" type="Node2D"]
 script = ExtResource("1_wglwx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
