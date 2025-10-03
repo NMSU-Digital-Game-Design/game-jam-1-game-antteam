@@ -11,6 +11,7 @@ signal timeout(red_ant)   # NEW signal when timer runs out
 var player: Node2D = null
 var health: int = 5
 var in_combat: bool = false
+var see_player: bool = false
 
 func _ready():
 	# find the player in the scene by group
@@ -23,6 +24,15 @@ func _ready():
 	# initialize health bar
 	#$HealthBar.max_value = health
 	#$HealthBar.value = health
+
+func _process(delta):
+	if not player:
+		return
+	if in_combat:
+		return   # freeze ant during combat
+	if see_player:
+		var direction = (player.position - position).normalized()
+		position.x += direction.x * speed * delta
 
 func show_enemy_health(max_health: int, name: String = "Enemy"):
 	$EnemyHealthLabel.text = name
@@ -58,15 +68,6 @@ func _on_combat_timer_timeout():
 	queue_free()
 
 
-
-func _process(delta):
-	if not player:
-		return
-	if in_combat:
-		return   # freeze ant during combat
-	var direction = (player.position - position).normalized()
-	position.x += direction.x * speed * delta
-
 #signal start_combat(player, red_ant)
 func _on_detector_body_entered(body):
 	print("[DEBUG] Detector triggered! Body entered:", body.name)
@@ -82,3 +83,12 @@ func start_combat():
 	start_combat_timer()
 	
 		
+
+
+func _on_follow_player_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		see_player = true
+
+func _on_follow_player_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		see_player = false
