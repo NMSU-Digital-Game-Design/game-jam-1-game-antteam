@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://23p8keta0hlf"]
+
+[ext_resource type="PackedScene" uid="uid://8dxuyy0anv4e" path="res://hud.tscn" id="1_qedvx"]
+[ext_resource type="PackedScene" uid="uid://cxomqc3r7fk8o" path="res://playground-test/playground.tscn" id="2_xn0xh"]
+[ext_resource type="PackedScene" uid="uid://cdx5umep5ftjn" path="res://player/player.tscn" id="3_ydukh"]
+
+[node name="PlaygroundGame" type="Node2D"]
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="Overlay" instance=ExtResource("1_qedvx")]
+
+[node name="Playground" parent="." instance=ExtResource("2_xn0xh")]
+
+[node name="Player" parent="." instance=ExtResource("3_ydukh")]
+unique_name_in_owner = true
+position = Vector2(64, 179)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]

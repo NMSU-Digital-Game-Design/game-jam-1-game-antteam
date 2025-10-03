@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt77vcsxuo718"]
+
+[ext_resource type="Script" uid="uid://bmhk8ol6idnoi" path="res://test_main/test_main.gd" id="1_bmoxp"]
+[ext_resource type="PackedScene" uid="uid://ckypo4jsjuepe" path="res://loading/loading.tscn" id="2_wt1f0"]
+
+[node name="TestMain" type="Node2D"]
+script = ExtResource("1_bmoxp")
+
+[node name="loading" parent="." instance=ExtResource("2_wt1f0")]
+unique_name_in_owner = true
