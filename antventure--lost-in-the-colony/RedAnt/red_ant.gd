@@ -54,6 +54,7 @@ func _on_combat_timer_timeout():
 	print("RedAnt survived the combat! Player loses 1 life.")
 	emit_signal("timeout", self)
 	won.emit()
+	GvPlayer.player_health -= 1
 	queue_free()
 
 

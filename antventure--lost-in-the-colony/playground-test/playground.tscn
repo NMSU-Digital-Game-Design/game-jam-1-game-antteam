@@ -61,7 +61,7 @@ position = Vector2(534, 155)
 position = Vector2(516, -350)
 
 [node name="RedAnt" parent="." instance=ExtResource("10_ijab2")]
-position = Vector2(320, -64)
+position = Vector2(419, 162)
 
 [node name="AntCanSpawn" type="Area2D" parent="."]
 position = Vector2(1124, 63)
