@@ -15,5 +15,3 @@
 [node name="Player" parent="." instance=ExtResource("3_ydukh")]
 unique_name_in_owner = true
 position = Vector2(64, 179)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]

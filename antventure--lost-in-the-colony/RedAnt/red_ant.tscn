@@ -19,45 +19,30 @@ shape = SubResource("RectangleShape2D_wglwx")
 scale = Vector2(0.202, 0.2)
 texture = ExtResource("2_wglwx")
 
-[node name="CombatTimer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
-
 [node name="FollowPlayer" type="Area2D" parent="."]
 position = Vector2(0, -23.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FollowPlayer"]
 shape = SubResource("RectangleShape2D_i6gnh")
 
-[node name="EnemyHealthLabel" type="Label" parent="."]
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -141.0
-offset_top = -73.0
-offset_right = -33.0
-offset_bottom = -50.0
-grow_horizontal = 2
-text = "Enemy Health"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="EnemyHealthBar" type="ProgressBar" parent="."]
 visible = false
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -89.0
-offset_top = -53.0
-offset_right = 111.0
-offset_bottom = -26.0
+anchor_bottom = 1.0
+offset_left = -115.0
+offset_top = 38.0
+offset_right = 85.0
+offset_bottom = 65.0
 grow_horizontal = 2
-max_value = 5.0
-value = 5.0
+grow_vertical = 0
 show_percentage = false
 
+[node name="FightTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_detector_body_entered"]
-[connection signal="timeout" from="CombatTimer" to="." method="_on_combat_timer_timeout"]
 [connection signal="body_entered" from="FollowPlayer" to="." method="_on_follow_player_body_entered"]
 [connection signal="body_exited" from="FollowPlayer" to="." method="_on_follow_player_body_exited"]
+[connection signal="timeout" from="FightTimer" to="." method="_on_fight_timer_timeout"]
