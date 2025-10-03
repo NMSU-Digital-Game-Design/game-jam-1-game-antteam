@@ -8,6 +8,7 @@ radius = 30.6097
 height = 71.7053
 
 [node name="AppleSlice" type="Area2D"]
+collision_layer = 4
 script = ExtResource("1_u2rpp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6de3i6aiyjag"]
+
+[ext_resource type="Script" uid="uid://d0f405dew0c4c" path="res://RedAnt/red_ant.gd" id="1_wglwx"]
+[ext_resource type="Texture2D" uid="uid://7ik1ofpatlg2" path="res://RedAnt/assets/ant.jpeg" id="2_wglwx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wglwx"]
+size = Vector2(64, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6gnh"]
+size = Vector2(672, 83)
+
+[node name="RedAnt" type="Area2D"]
+script = ExtResource("1_wglwx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wglwx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.202, 0.2)
+texture = ExtResource("2_wglwx")
+
+[node name="CombatTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="FollowPlayer" type="Area2D" parent="."]
+position = Vector2(0, -23.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FollowPlayer"]
+shape = SubResource("RectangleShape2D_i6gnh")
+
+[node name="EnemyHealthLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -141.0
+offset_top = -73.0
+offset_right = -33.0
+offset_bottom = -50.0
+grow_horizontal = 2
+text = "Enemy Health"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemyHealthBar" type="ProgressBar" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.0
+offset_top = -53.0
+offset_right = 111.0
+offset_bottom = -26.0
+grow_horizontal = 2
+max_value = 5.0
+value = 5.0
+show_percentage = false
+
+[connection signal="body_entered" from="." to="." method="_on_detector_body_entered"]
+[connection signal="timeout" from="CombatTimer" to="." method="_on_combat_timer_timeout"]
+[connection signal="body_entered" from="FollowPlayer" to="." method="_on_follow_player_body_entered"]
+[connection signal="body_exited" from="FollowPlayer" to="." method="_on_follow_player_body_exited"]
