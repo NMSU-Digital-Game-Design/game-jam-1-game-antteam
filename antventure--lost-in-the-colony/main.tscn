@@ -1,30 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dw7mdhopeau5k"]
+[gd_scene load_steps=3 format=3 uid="uid://dw7mdhopeau5k"]
 
-[ext_resource type="PackedScene" uid="uid://cxomqc3r7fk8o" path="res://playground-test/playground.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://bjxx47m5864iy" path="res://main.gd" id="1_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://cdx5umep5ftjn" path="res://player/player.tscn" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://8dxuyy0anv4e" path="res://hud.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://ckypo4jsjuepe" path="res://loading/loading.tscn" id="2_0xm2m"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1bvp3")
 
-[node name="Overlay" type="CanvasLayer" parent="."]
-
-[node name="HUD" parent="Overlay" instance=ExtResource("3_h2yge")]
-offset_left = 3.0
-offset_top = 1.0
-
-[node name="Playground" parent="." instance=ExtResource("1_0xm2m")]
-
-[node name="Player" parent="." instance=ExtResource("2_h2yge")]
-unique_name_in_owner = true
-position = Vector2(64, 179)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
-[node name="RedAntTimer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
-
-[connection signal="out_of_lives" from="Player" to="." method="_on_player_out_of_lives"]
-[connection signal="timeout" from="RedAntTimer" to="." method="_on_red_ant_timer_timeout"]
+[node name="loading" parent="." instance=ExtResource("2_0xm2m")]

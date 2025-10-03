@@ -14,3 +14,6 @@ func spawn_ant():
 	get_parent().add_child(red_ant)  # add to Main/Playground
 	red_ant.global_position = spawn_point.global_position
 	print("Spawned RedAnt at AntHill:", spawn_point.name)
+
+func _on_red_ant_timer_timeout():
+	spawn_ant()

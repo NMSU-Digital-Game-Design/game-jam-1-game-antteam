@@ -73,8 +73,14 @@ position = Vector2(419, 162)
 position = Vector2(1007, 168)
 metadata/_edit_group_ = true
 
+[node name="RedAntTimer" type="Timer" parent="AntHill"]
+wait_time = 10.0
+autostart = true
+
 [node name="AntCanSpawn" type="Area2D" parent="AntHill"]
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AntHill/AntCanSpawn"]
 shape = SubResource("RectangleShape2D_ijab2")
+
+[connection signal="timeout" from="AntHill/RedAntTimer" to="AntHill" method="_on_red_ant_timer_timeout"]
