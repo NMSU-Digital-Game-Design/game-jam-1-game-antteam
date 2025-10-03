@@ -7,6 +7,7 @@
 size = Vector2(101.923, 35)
 
 [node name="AppleSlice" type="Area2D"]
+collision_layer = 4
 script = ExtResource("1_u2rpp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

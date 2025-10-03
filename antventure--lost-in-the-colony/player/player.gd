@@ -1,13 +1,12 @@
 extends CharacterBody2D
 signal out_of_lives
-signal hit
+signal hit_enemy
 var current_enemy: Node = null   # store the RedAnt during combat
 var lives := 3
 var in_combat := false   # starting lives
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -51,7 +50,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 	elif in_combat:
 		if Input.is_action_just_pressed("select"):
-			hit.emit()  # usually Space/Enter
+			hit_enemy.emit() # usually Space/Enter
 			print("Player attacked!")
 			if current_enemy:
 				current_enemy.take_hit()
@@ -69,17 +68,19 @@ func jump():
 	
 ##### COMBAT #####
 
+# Player will enter combat and will connect the hit enemy signal to the current
+# enemy's "take_hit" function
 func enter_combat():
 	in_combat = true
+	connect("hit_enemy", Callable(current_enemy, "take_hit"))
 	print("Entering combat mode... Player can’t move now.")
+
+# Player will exit out of combat and will set the current_enemy to null
+
 func exit_combat():
 	in_combat = false
+	current_enemy = null
 	print("Exiting combat mode... Player can move again.")
-
-func lose_life():
-	GvPlayer.player_health -= 1
-	print("Player lost a life! Lives left: ", GvPlayer.player_health)
-	get_tree().root.get_node("Main/HUD").update_lives(GvPlayer.player_health)
 	
 	
 func hurt(dmg: int):
@@ -89,6 +90,3 @@ func hurt(dmg: int):
 		out_of_lives.emit()
 	GvPlayer.player_health = health
 	print("Hit!")
-
-func connect_enemy(enemy):
-	pass

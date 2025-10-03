@@ -4,6 +4,7 @@ extends Node2D
 
 
 signal hit(current_health)
+signal won
 signal died
 signal timeout(red_ant)   # NEW signal when timer runs out
 
@@ -16,7 +17,9 @@ func _ready():
 	var players = get_tree().get_nodes_in_group("Player")
 	if players.size() > 0:
 		player = players[0]   # take the first player found
+
 	connect("died", Callable(player, "exit_combat"))
+	connect("won", Callable(player, "exit_combat"))
 	# initialize health bar
 	#$HealthBar.max_value = health
 	#$HealthBar.value = health
@@ -38,21 +41,19 @@ func hide_enemy_health():
 func take_hit():
 	health -= 1
 	print("RedAnt hit! Health: ", health)
-	GvPlayer.player_health
-	# update health bar
-	#$HealthBar.value = health
 	if health <= 0:
 		print("RedAnt defeated!")
-		died.emit()
-		emit_signal("died", self)
 		queue_free()   # remove ant
+		died.emit()
+
 func start_combat_timer():
-	player.connect("hit", Callable(self, "take_hit"))
+	player.connect("hit_enemy", Callable(self, "take_hit"))
 	$CombatTimer.start()
 
 func _on_combat_timer_timeout():
 	print("RedAnt survived the combat! Player loses 1 life.")
 	emit_signal("timeout", self)
+	won.emit()
 	queue_free()
 
 
@@ -63,7 +64,7 @@ func _process(delta):
 	if in_combat:
 		return   # freeze ant during combat
 	var direction = (player.position - position).normalized()
-	position += direction * speed * delta
+	position.x += direction.x * speed * delta
 
 #signal start_combat(player, red_ant)
 func _on_detector_body_entered(body):
