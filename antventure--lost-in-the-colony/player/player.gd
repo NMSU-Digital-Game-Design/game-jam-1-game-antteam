@@ -26,6 +26,7 @@ func _physics_process(delta: float) -> void:
 		var direction := Input.get_axis("up", "down")
 		if direction:
 			velocity.y = direction * SPEED
+			#adding animations for the wall
 			$AnimatedSprite2D.animation = "up"
 			$AnimatedSprite2D.flip_v = velocity.y > 0
 		else:
