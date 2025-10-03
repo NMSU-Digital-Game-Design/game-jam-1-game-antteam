@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxomqc3r7fk8o"]
+[gd_scene load_steps=9 format=3 uid="uid://cxomqc3r7fk8o"]
 
 [ext_resource type="Script" uid="uid://c1bdn025qdkkv" path="res://playground-test/playground.gd" id="1_ac5cj"]
 [ext_resource type="TileSet" uid="uid://copcsedvakhku" path="res://playground-test/playground.tres" id="2_w2dbe"]
 [ext_resource type="PackedScene" uid="uid://cj1r6c4xwhgxu" path="res://pick-ups/sugar_cube.tscn" id="6_ac5cj"]
+[ext_resource type="PackedScene" uid="uid://bgtweea3hhxx5" path="res://RedAnt/ant_hill.tscn" id="7_ac5cj"]
 [ext_resource type="PackedScene" uid="uid://c4mud5gjub0mh" path="res://playground-test/spikes.tscn" id="8_cn5ks"]
 [ext_resource type="PackedScene" uid="uid://dukima5ha1ptt" path="res://pick-ups/apple_slice.tscn" id="9_sv118"]
 [ext_resource type="PackedScene" uid="uid://b6de3i6aiyjag" path="res://RedAnt/red_ant.tscn" id="10_ijab2"]
@@ -18,6 +19,9 @@ texture_filter = 1
 tile_set = ExtResource("2_w2dbe")
 format = 2
 layer_0/tile_data = PackedInt32Array(393217, 65537, 0, 393218, 65537, 0, 393219, 589825, 3, 393220, 65537, 0, 393221, 131073, 0, 393222, 1, 0, 393223, 65537, 0, 393224, 131073, 0, 393225, 65537, 0, 393226, 1, 0, 393227, 65537, 0, 393228, 65537, 0, 393229, 65537, 0, 393230, 589825, 3, 393231, 131073, 0, 393232, 131073, 0, 393233, 65537, 0, 393234, 131073, 0, 393235, 131073, 0, 393236, 589825, 3, 393237, 1, 0, 393238, 589825, 3, 393239, 131073, 0, 393240, 1, 0, 393241, 589825, 3, 393242, 655361, 3, 393243, 589825, 3, 393244, 131073, 0, 393245, 589825, 3, 393246, 131073, 0, 393247, 589825, 3, 393248, 655361, 3, 393249, 131073, 0, 393250, 131073, 0, 327702, 2, 0, 262166, 2, 0, 196630, 2, 0, 131094, 3, 0, 393251, 65540, 0, 393252, 131076, 0, 393253, 131076, 0, 393254, 65540, 0, 393255, 131076, 0, 393256, 65540, 0, 393257, 131076, 0, 65553, 983041, 3, 65554, 131073, 4, -131061, 262145, 0, -65525, 262145, 1, 11, 262145, 2, -393199, 262145, 0, -327663, 262145, 1, -262127, 262145, 2, -589813, 262145, 0, -524277, 262145, 1, -458741, 262145, 2)
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(107, 154)
 
 [node name="Hazards" type="Node" parent="."]
 
@@ -63,11 +67,20 @@ position = Vector2(516, -350)
 [node name="RedAnt" parent="." instance=ExtResource("10_ijab2")]
 position = Vector2(419, 162)
 
-[node name="AntCanSpawn" type="Area2D" parent="."]
-position = Vector2(1124, 63)
+[node name="Enemies" type="Node" parent="."]
+
+[node name="AntHill" parent="." instance=ExtResource("7_ac5cj")]
+position = Vector2(1007, 168)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AntCanSpawn"]
+[node name="RedAntTimer" type="Timer" parent="AntHill"]
+wait_time = 10.0
+autostart = true
+
+[node name="AntCanSpawn" type="Area2D" parent="AntHill"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AntHill/AntCanSpawn"]
 shape = SubResource("RectangleShape2D_ijab2")
 
-[node name="Enemies" type="Node" parent="."]
+[connection signal="timeout" from="AntHill/RedAntTimer" to="AntHill" method="_on_red_ant_timer_timeout"]
