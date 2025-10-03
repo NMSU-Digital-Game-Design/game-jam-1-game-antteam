@@ -7,7 +7,7 @@
 size = Vector2(36, 37)
 
 [node name="SugarCube" type="Area2D"]
-collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_20yt1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

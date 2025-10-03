@@ -49,7 +49,7 @@ size = Vector2(129.479, 177.679)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(0.50639, 0.158666)
-collision_mask = 7
+collision_layer = 3
 script = ExtResource("1_rkbax")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
