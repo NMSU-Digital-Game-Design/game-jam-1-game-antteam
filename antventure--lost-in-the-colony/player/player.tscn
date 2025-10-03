@@ -30,7 +30,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"right",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -45,7 +45,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
-size = Vector2(129.479, 111.999)
+size = Vector2(129.479, 177.679)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(0.50639, 0.158666)
@@ -53,12 +53,12 @@ collision_layer = 3
 script = ExtResource("1_rkbax")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-0.493692, -42.5422)
-scale = Vector2(4.16551, 6.40102)
+position = Vector2(-0.493668, -99.2652)
+scale = Vector2(4.16551, 9.94621)
 sprite_frames = SubResource("SpriteFrames_boad6")
 animation = &"right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.605047, 1.93102)
+position = Vector2(0.605047, -30.9089)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hqtel")

@@ -17,3 +17,11 @@ func _process(delta: float) -> void:
 # here. 
 func update_labels():
 	score_label.text = str("Score: " , GvPlayer.score)
+	
+
+var start = preload("res://main.tscn").instantiate()
+
+func _on_start_button_pressed() -> void:
+	get_tree().root.add_child(start) 
+	$start_button.hide()
+	$TextureRect.hide()
