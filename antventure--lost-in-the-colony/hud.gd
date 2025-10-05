@@ -3,9 +3,11 @@
 extends Control
 
 @onready var pause: Control = $PAUSE
+@onready var play_info: ColorRect = $PAUSE/PlayInfo
 
 @onready var score_label: Label = $ScoreLabel
 var is_paused:= false
+var how_to_play_on := false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# updates should be done by functions and grouped together
@@ -29,3 +31,11 @@ func _input(event: InputEvent) -> void:
 			pause.show()
 			is_paused = true
 			get_tree().paused = true
+
+func _on_how_to_play_button_pressed() -> void:
+	if how_to_play_on:
+		play_info.hide()
+		how_to_play_on = false
+	elif !how_to_play_on:
+		play_info.show()
+		how_to_play_on = true

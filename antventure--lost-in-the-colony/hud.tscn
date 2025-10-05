@@ -31,3 +31,36 @@ layout_mode = 0
 [node name="PAUSE" parent="." instance=ExtResource("3_8sq4i")]
 visible = false
 layout_mode = 1
+
+[node name="HowToPlayButton" type="Button" parent="PAUSE"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -29.0
+offset_right = 52.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "How To Play"
+
+[node name="PlayInfo" type="ColorRect" parent="PAUSE"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -243.0
+offset_right = -96.9999
+offset_bottom = -203.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(7.08822, 12.7135)
+
+[connection signal="pressed" from="PAUSE/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
