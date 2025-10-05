@@ -1,12 +1,117 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxomqc3r7fk8o"]
+[gd_scene load_steps=15 format=3 uid="uid://cxomqc3r7fk8o"]
 
 [ext_resource type="Script" uid="uid://c1bdn025qdkkv" path="res://playground-test/playground.gd" id="1_ac5cj"]
 [ext_resource type="TileSet" uid="uid://copcsedvakhku" path="res://playground-test/playground.tres" id="2_w2dbe"]
+[ext_resource type="Texture2D" uid="uid://dq1epr7xvq8ci" path="res://playground-test/assets/assets.png" id="3_sv118"]
 [ext_resource type="PackedScene" uid="uid://cj1r6c4xwhgxu" path="res://pick-ups/sugar_cube.tscn" id="6_ac5cj"]
 [ext_resource type="PackedScene" uid="uid://bgtweea3hhxx5" path="res://RedAnt/ant_hill.tscn" id="7_ac5cj"]
 [ext_resource type="PackedScene" uid="uid://c4mud5gjub0mh" path="res://playground-test/spikes.tscn" id="8_cn5ks"]
+[ext_resource type="PackedScene" uid="uid://cjeey205ukgfo" path="res://leaf_upgrade.tscn" id="8_sv118"]
 [ext_resource type="PackedScene" uid="uid://dukima5ha1ptt" path="res://pick-ups/apple_slice.tscn" id="9_sv118"]
 [ext_resource type="PackedScene" uid="uid://b6de3i6aiyjag" path="res://RedAnt/red_ant.tscn" id="10_ijab2"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ijab2"]
+texture = ExtResource("3_sv118")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -7.32851, 16, -7.32851, 16, 16, -16, 16)
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+0:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+1:5/0 = 0
+3:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5bfmr"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 17
+physics_layer_0/collision_mask = 0
+sources/1 = SubResource("TileSetAtlasSource_ijab2")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1mjon"]
+texture = ExtResource("3_sv118")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+0:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+1:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:4/0 = 0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:5/0 = 0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:6/0 = 0
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:7/0 = 0
+3:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ej0lu"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 8
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_1mjon")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijab2"]
 size = Vector2(1014, 726)
@@ -19,6 +124,16 @@ texture_filter = 1
 tile_set = ExtResource("2_w2dbe")
 format = 2
 layer_0/tile_data = PackedInt32Array(393217, 65537, 0, 393218, 65537, 0, 393219, 589825, 3, 393220, 65537, 0, 393221, 131073, 0, 393222, 1, 0, 393223, 65537, 0, 393224, 131073, 0, 393225, 65537, 0, 393226, 1, 0, 393227, 65537, 0, 393228, 65537, 0, 393229, 65537, 0, 393230, 589825, 3, 393231, 131073, 0, 393232, 131073, 0, 393233, 65537, 0, 393234, 131073, 0, 393235, 131073, 0, 393236, 589825, 3, 393237, 1, 0, 393238, 589825, 3, 393239, 131073, 0, 393240, 1, 0, 393241, 589825, 3, 393242, 655361, 3, 393243, 589825, 3, 393244, 131073, 0, 393245, 589825, 3, 393246, 131073, 0, 393247, 589825, 3, 393248, 655361, 3, 393249, 131073, 0, 393250, 131073, 0, 327702, 2, 0, 262166, 2, 0, 196630, 2, 0, 131094, 3, 0, 393251, 65540, 0, 393252, 131076, 0, 393253, 131076, 0, 393254, 65540, 0, 393255, 131076, 0, 393256, 65540, 0, 393257, 131076, 0, 65553, 983041, 3, 65554, 131073, 4, -131061, 262145, 0, -65525, 262145, 1, 11, 262145, 2, -393199, 262145, 0, -327663, 262145, 1, -262127, 262145, 2, -589813, 262145, 0, -524277, 262145, 1, -458741, 262145, 2)
+
+[node name="WaterUpgrade" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_5bfmr")
+format = 2
+layer_0/tile_data = PackedInt32Array(393251, 131073, 0, 393252, 131073, 0, 393253, 131073, 0, 393254, 131073, 0, 393255, 131073, 0, 393256, 131073, 0)
+
+[node name="WaterDMGAreas" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_ej0lu")
+format = 2
+layer_0/tile_data = PackedInt32Array(1507355, 131072, 0, 1507356, 131072, 0, 1507357, 131072, 0, 1507358, 131072, 0, 1507359, 131072, 0, 1507360, 131072, 0, 1442054, 196608, 3, 1507590, 196608, 4, 1573126, 196608, 5, 1638662, 196608, 6, 1704198, 196608, 7, 1442055, 196608, 3, 1507591, 196608, 4, 1573127, 196608, 5, 1638663, 196608, 6, 1704199, 196608, 7, 1442056, 196608, 3, 1507592, 196608, 4, 1573128, 196608, 5, 1638664, 196608, 6, 1704200, 196608, 7, 1442057, 196608, 3, 1507593, 196608, 4, 1573129, 196608, 5, 1638665, 196608, 6, 1704201, 196608, 7, 1442058, 196608, 3, 1507594, 196608, 4, 1573130, 196608, 5, 1638666, 196608, 6, 1704202, 196608, 7, 1442059, 196608, 3, 1507595, 196608, 4, 1573131, 196608, 5, 1638667, 196608, 6, 1704203, 196608, 7, 1442060, 196608, 3, 1507596, 196608, 4, 1573132, 196608, 5, 1638668, 196608, 6, 1704204, 196608, 7, 1442061, 196608, 3, 1507597, 196608, 4, 1573133, 196608, 5, 1638669, 196608, 6, 1704205, 196608, 7, 1442062, 196608, 3, 1507598, 196608, 4, 1573134, 196608, 5, 1638670, 196608, 6, 1704206, 196608, 7, 1442063, 196608, 3, 1507599, 196608, 4, 1573135, 196608, 5, 1638671, 196608, 6, 1704207, 196608, 7, 1442064, 196608, 3, 1507600, 196608, 4, 1573136, 196608, 5, 1638672, 196608, 6, 1704208, 196608, 7, 1442065, 196608, 3, 1507601, 196608, 4, 1573137, 196608, 5, 1638673, 196608, 6, 1704209, 196608, 7, 1442066, 196608, 3, 1507602, 196608, 4, 1573138, 196608, 5, 1638674, 196608, 6, 1704210, 196608, 7, 1442067, 196608, 3, 1507603, 196608, 4, 1573139, 196608, 5, 1638675, 196608, 6, 1704211, 196608, 7, 1442068, 196608, 3, 1507604, 196608, 4, 1573140, 196608, 5, 1638676, 196608, 6, 1704212, 196608, 7, 1442069, 196608, 3, 1507605, 196608, 4, 1573141, 196608, 5, 1638677, 196608, 6, 1704213, 196608, 7, 1442070, 196608, 3, 1507606, 196608, 4, 1573142, 196608, 5, 1638678, 196608, 6, 1704214, 196608, 7, 1442071, 196608, 3, 1507607, 196608, 4, 1573143, 196608, 5, 1638679, 196608, 6, 1704215, 196608, 7, 1442072, 196608, 3, 1507608, 196608, 4, 1573144, 196608, 5, 1638680, 196608, 6, 1704216, 196608, 7, 1442073, 196608, 3, 1507609, 196608, 4, 1573145, 196608, 5, 1638681, 196608, 6, 1704217, 196608, 7, 1442074, 196608, 3, 1507610, 196608, 4, 1573146, 196608, 5, 1638682, 196608, 6, 1704218, 196608, 7, 1442075, 196608, 3, 1507611, 196608, 4, 1573147, 196608, 5, 1638683, 196608, 6, 1704219, 196608, 7, 1442076, 196608, 3, 1507612, 196608, 4, 1573148, 196608, 5, 1638684, 196608, 6, 1704220, 196608, 7, 1442077, 196608, 3, 1507613, 196608, 4, 1573149, 196608, 5, 1638685, 196608, 6, 1704221, 196608, 7, 393251, 131072, 0, 393252, 131072, 0, 393253, 131072, 0, 393254, 131072, 0, 393255, 131072, 0, 393256, 131072, 0, 393257, 131072, 0)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(107, 154)
@@ -66,6 +181,7 @@ position = Vector2(516, -350)
 
 [node name="RedAnt" parent="." instance=ExtResource("10_ijab2")]
 position = Vector2(419, 162)
+scale = Vector2(1, 1)
 max_health = 20
 difficulty_timer = 0.25
 able_to_move = false
@@ -85,5 +201,8 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AntHill/AntCanSpawn"]
 shape = SubResource("RectangleShape2D_ijab2")
+
+[node name="LeafUpgrade" parent="." instance=ExtResource("8_sv118")]
+position = Vector2(836, 158)
 
 [connection signal="timeout" from="AntHill/RedAntTimer" to="AntHill" method="_on_red_ant_timer_timeout"]

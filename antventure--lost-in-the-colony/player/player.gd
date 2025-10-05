@@ -118,5 +118,6 @@ func hurt(dmg: int):
 
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
-	GvPlayer.player_health -= 1
-	emit_signal("respawn", global_position)
+	if !GvPlayer.LeafUpgrade:
+		GvPlayer.player_health -= 1
+		emit_signal("respawn", global_position)

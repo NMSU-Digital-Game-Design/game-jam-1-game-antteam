@@ -1,4 +1,5 @@
 extends Node2D
+
 @onready var checkpoints_node: Node = $Checkpoints
 
 func get_all_checkpoints() -> Array:

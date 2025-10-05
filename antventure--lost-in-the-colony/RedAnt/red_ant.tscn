@@ -43,7 +43,6 @@ animation = &"walking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.42857, 6.57143)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wglwx")
 
 [node name="FollowPlayer" type="Area2D" parent="."]
