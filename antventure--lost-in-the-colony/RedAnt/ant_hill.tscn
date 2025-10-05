@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgtweea3hhxx5"]
+
+[ext_resource type="Script" uid="uid://vdtp6ahicmpc" path="res://RedAnt/ant_hill.gd" id="1_35dye"]
+[ext_resource type="PackedScene" uid="uid://b6de3i6aiyjag" path="res://RedAnt/red_ant.tscn" id="2_sntpv"]
+[ext_resource type="Texture2D" uid="uid://bxt5ui6neldt5" path="res://icon.svg" id="3_bjkh3"]
+
+[node name="AntHill" type="Node2D"]
+script = ExtResource("1_35dye")
+red_ant_scene = ExtResource("2_sntpv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.410157, 0.375)
+texture = ExtResource("3_bjkh3")
+
+[node name="Spawn1" type="Marker2D" parent="."]

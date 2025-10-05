@@ -43,6 +43,11 @@ animations = [{
 "name": &"up",
 "speed": 5.0
 }]
+[gd_scene load_steps=5 format=3 uid="uid://cdx5umep5ftjn"]
+
+[ext_resource type="Script" uid="uid://dn6uhnqxxldvo" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Texture2D" uid="uid://bxt5ui6neldt5" path="res://icon.svg" id="2_g1dw6"]
+[ext_resource type="PackedScene" uid="uid://1vwi2qvj1atr" path="res://player/player_camera.tscn" id="3_g1dw6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
 size = Vector2(129.479, 177.679)
@@ -62,3 +67,5 @@ animation = &"right"
 position = Vector2(0.605047, -30.9089)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hqtel")
+
+[node name="PlayerCamera" parent="." instance=ExtResource("3_g1dw6")]

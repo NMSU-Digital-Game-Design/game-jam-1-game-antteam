@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6de3i6aiyjag"]
+
+[ext_resource type="Script" uid="uid://d0f405dew0c4c" path="res://RedAnt/red_ant.gd" id="1_wglwx"]
+[ext_resource type="Texture2D" uid="uid://7ik1ofpatlg2" path="res://RedAnt/assets/ant.jpeg" id="2_wglwx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wglwx"]
+size = Vector2(64, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6gnh"]
+size = Vector2(672, 83)
+
+[node name="RedAnt" type="Area2D"]
+script = ExtResource("1_wglwx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wglwx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.202, 0.2)
+texture = ExtResource("2_wglwx")
+
+[node name="FollowPlayer" type="Area2D" parent="."]
+position = Vector2(0, -23.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FollowPlayer"]
+shape = SubResource("RectangleShape2D_i6gnh")
+
+[node name="EnemyHealthBar" type="ProgressBar" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -115.0
+offset_top = 38.0
+offset_right = 85.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 0
+show_percentage = false
+
+[node name="FightTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_detector_body_entered"]
+[connection signal="body_entered" from="FollowPlayer" to="." method="_on_follow_player_body_entered"]
+[connection signal="body_exited" from="FollowPlayer" to="." method="_on_follow_player_body_exited"]
+[connection signal="timeout" from="FightTimer" to="." method="_on_fight_timer_timeout"]

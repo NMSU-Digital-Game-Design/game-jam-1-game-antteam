@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dw7mdhopeau5k"]
+[gd_scene load_steps=3 format=3 uid="uid://dw7mdhopeau5k"]
 
-[ext_resource type="PackedScene" uid="uid://cxomqc3r7fk8o" path="res://playground-test/playground.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://bjxx47m5864iy" path="res://main.gd" id="1_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://cdx5umep5ftjn" path="res://player/player.tscn" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://8dxuyy0anv4e" path="res://hud.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://cdr6676bqcspk" path="res://level.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://ckypo4jsjuepe" path="res://loading/loading.tscn" id="2_0xm2m"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1bvp3")
@@ -26,3 +23,4 @@ limit_left = -750
 [node name="level" parent="." instance=ExtResource("5_lquwl")]
 
 [connection signal="out_of_lives" from="Player" to="." method="_on_player_out_of_lives"]
+[node name="loading" parent="." instance=ExtResource("2_0xm2m")]

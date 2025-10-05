@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cxomqc3r7fk8o"]
+[gd_scene load_steps=9 format=3 uid="uid://cxomqc3r7fk8o"]
 
 [ext_resource type="Script" uid="uid://c1bdn025qdkkv" path="res://playground-test/playground.gd" id="1_ac5cj"]
 [ext_resource type="Texture2D" uid="uid://ych00ecbee56" path="res://playground-test/assets/Terrain (32x32).png" id="1_is3ju"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cn1lmjpjlpj7j" path="res://playground-test/assets/Front Palm Tree Top 01.png" id="3_4bqqs"]
 [ext_resource type="Texture2D" uid="uid://drbbolwmg70yb" path="res://playground-test/assets/1.png" id="4_ynsuh"]
 [ext_resource type="PackedScene" uid="uid://cj1r6c4xwhgxu" path="res://pick-ups/sugar_cube.tscn" id="6_ac5cj"]
+[ext_resource type="PackedScene" uid="uid://bgtweea3hhxx5" path="res://RedAnt/ant_hill.tscn" id="7_ac5cj"]
 [ext_resource type="PackedScene" uid="uid://c4mud5gjub0mh" path="res://playground-test/spikes.tscn" id="8_cn5ks"]
 [ext_resource type="PackedScene" uid="uid://dukima5ha1ptt" path="res://pick-ups/apple_slice.tscn" id="9_sv118"]
 
@@ -195,6 +196,9 @@ tile_set = SubResource("TileSet_te8jg")
 format = 2
 layer_0/tile_data = PackedInt32Array(393217, 65536, 268435456, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 262158, 0, 0, 262159, 0, 0, 196623, 0, 0, 196624, 0, 0, 196625, 0, 0, 196626, 65536, 0, 20, 65536, 268435456, 65556, 65536, 268435457, 65557, 0, 1, -196581, 0, 0, -131045, 0, 1, -65509, 0, 1, 27, 0, 1, 65563, 0, 1, 131099, 0, 1, -131057, 65536, 268435456, -131056, 0, 0, -131055, 0, 0, -131054, 65536, 0, -262131, 0, 0, -458742, 65536, 0, -458743, 0, 1, -524279, 0, 0, -524280, 65536, 268435456, 393244, 65536, 268435456, 393245, 0, 0, 393246, 0, 0, 393247, 0, 0, 393248, 0, 0, 393249, 0, 0, 393250, 0, 0, 393251, 0, 0, 393252, 0, 0, 393253, 0, 0, 393254, 0, 0, 393255, 0, 0, 393256, 0, 0, 393257, 0, 1, 327721, 0, 0, 327722, 0, 0, 327723, 65536, 0, -65490, 0, 0, 46, 0, 1, 65582, 0, 1, 131118, 0, 1, 196654, 0, 1, -196559, 65536, 268435456, -196558, 0, 0, -196557, 0, 0, -196556, 0, 0, -196555, 0, 0, -196554, 0, 0, -196553, 65536, 0, 393276, 65536, 268435456, 393277, 0, 0, 393278, 65536, 0, 393283, 65536, 268435456, 327748, 0, 0, 262213, 0, 0, 262214, 0, 0, 262215, 0, 0, 262216, 0, 0, 262217, 0, 0, 262218, 0, 0, 262219, 0, 0, 262220, 0, 0, 262221, 65536, 0, 393234, 65536, 0, -458744, 65536, 268435458, -393207, 0, 2, -393206, 65536, 2, 262160, 65536, 2, 327695, 65536, 2, 131093, 0, 1, 196629, 65536, 268435458, 196630, 0, 2, 131094, 0, 0, 21, 0, 0, 196635, 0, 2, 393258, 65536, 2, 262190, 0, 2, 393284, 65536, 2, 327749, 65536, 2, 393216, 0, 0, 458751, 0, 0, 458750, 0, 0, 458749, 0, 0, 458748, 0, 0, 393212, 0, 0, 393211, 0, 0, 393210, 0, 0, 393209, 0, 0, 458745, 0, 0, 458744, 0, 0, 458743, 0, 0, 393207, 0, 0, 393206, 0, 0, 393205, 0, 0, 393204, 0, 0)
 
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(107, 154)
+
 [node name="Hazards" type="Node" parent="."]
 
 [node name="SPIKES" parent="Hazards" instance=ExtResource("8_cn5ks")]
@@ -235,3 +239,27 @@ position = Vector2(534, 155)
 
 [node name="AppleSlice" parent="Food/AppleSlices" instance=ExtResource("9_sv118")]
 position = Vector2(516, -350)
+
+[node name="RedAnt" parent="." instance=ExtResource("10_ijab2")]
+position = Vector2(419, 162)
+max_health = 20
+difficulty_timer = 0.25
+able_to_move = false
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="AntHill" parent="." instance=ExtResource("7_ac5cj")]
+position = Vector2(1007, 168)
+metadata/_edit_group_ = true
+
+[node name="RedAntTimer" type="Timer" parent="AntHill"]
+wait_time = 10.0
+autostart = true
+
+[node name="AntCanSpawn" type="Area2D" parent="AntHill"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AntHill/AntCanSpawn"]
+shape = SubResource("RectangleShape2D_ijab2")
+
+[connection signal="timeout" from="AntHill/RedAntTimer" to="AntHill" method="_on_red_ant_timer_timeout"]
