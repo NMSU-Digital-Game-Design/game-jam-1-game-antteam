@@ -11,5 +11,3 @@ red_ant_scene = ExtResource("2_sntpv")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.410157, 0.375)
 texture = ExtResource("3_bjkh3")
-
-[node name="Spawn1" type="Marker2D" parent="."]

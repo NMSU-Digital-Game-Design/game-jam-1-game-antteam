@@ -1,28 +1,56 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6de3i6aiyjag"]
+[gd_scene load_steps=8 format=3 uid="uid://b6de3i6aiyjag"]
 
 [ext_resource type="Script" uid="uid://d0f405dew0c4c" path="res://RedAnt/red_ant.gd" id="1_wglwx"]
-[ext_resource type="Texture2D" uid="uid://7ik1ofpatlg2" path="res://RedAnt/assets/ant.jpeg" id="2_wglwx"]
+[ext_resource type="Texture2D" uid="uid://bwpokouqtspwg" path="res://player/mob asset sheet/mob.png" id="2_i6gnh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wa6uu"]
+atlas = ExtResource("2_i6gnh")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dka24"]
+atlas = ExtResource("2_i6gnh")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ibn3k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wa6uu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dka24")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wglwx"]
-size = Vector2(64, 42)
+size = Vector2(57.1429, 18.8571)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6gnh"]
 size = Vector2(672, 83)
 
 [node name="RedAnt" type="Area2D"]
+scale = Vector2(0.7, 0.7)
 script = ExtResource("1_wglwx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_wglwx")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.85714, -14.2857)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ibn3k")
+animation = &"walking"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.202, 0.2)
-texture = ExtResource("2_wglwx")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.42857, 6.57143)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wglwx")
 
 [node name="FollowPlayer" type="Area2D" parent="."]
 position = Vector2(0, -23.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FollowPlayer"]
+modulate = Color(1, 1, 1, 0.156863)
 shape = SubResource("RectangleShape2D_i6gnh")
 
 [node name="EnemyHealthBar" type="ProgressBar" parent="."]

@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dyvwjalfyalo"]
+
+[node name="Checkpoint" type="Marker2D"]
