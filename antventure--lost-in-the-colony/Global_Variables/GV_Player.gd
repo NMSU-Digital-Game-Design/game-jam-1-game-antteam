@@ -11,6 +11,8 @@ var raise_health = 5
 var max_points:= score
 var in_combat = false
 
+var LeafUpgrade:= false
+
 func check_score(points: int):
 	score += points
 	if points > raise_health:
