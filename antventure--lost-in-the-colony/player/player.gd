@@ -1,9 +1,11 @@
 extends CharacterBody2D
 signal out_of_lives
 signal hit_enemy
-
+signal respawn(pos: Vector2)
 
 @onready var player_camera: Camera2D = $PlayerCamera
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hit_box: Area2D = $HitBox
 
 var current_enemy: Node = null   # store the RedAnt during combat
 var lives := 3
@@ -33,6 +35,10 @@ func _physics_process(delta: float) -> void:
 		elif not is_on_floor():
 			velocity += get_gravity() * delta
 			var direction := Input.get_axis("left", "right")
+			if direction == 0:
+				animated_sprite_2d.pause()
+			else:
+				animated_sprite_2d.play("walking")
 			direction_facing = direction
 
 			if direction:
@@ -49,6 +55,14 @@ func _physics_process(delta: float) -> void:
 			# Get the input direction and handle the movement/deceleration.
 			# As good practice, you should replace UI actions with custom gameplay actions.
 			var direction := Input.get_axis("left", "right")
+			if direction == 0:
+				animated_sprite_2d.pause()
+			else:
+				animated_sprite_2d.play("walking")
+			if direction > 0: 
+				animated_sprite_2d.flip_h = false
+			elif direction <0:
+				animated_sprite_2d.flip_h = true
 			direction_facing = direction
 			if direction:
 				velocity.x = direction * SPEED
@@ -101,3 +115,9 @@ func hurt(dmg: int):
 		out_of_lives.emit()
 	GvPlayer.player_health = health
 	print("Hit!")
+
+
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	if !GvPlayer.LeafUpgrade:
+		GvPlayer.player_health -= 1
+		emit_signal("respawn", global_position)
