@@ -1,10 +1,11 @@
 # The HUD should be used for anything that needs to be on screen at all times i.e. score,
 # time, lives, etc.
-
 extends Control
+
+@onready var pause: Control = $PAUSE
+
 @onready var score_label: Label = $ScoreLabel
-
-
+var is_paused:= false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# updates should be done by functions and grouped together
@@ -17,3 +18,14 @@ func _process(delta: float) -> void:
 # here. 
 func update_labels():
 	score_label.text = str("Score: " , GvPlayer.score)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		if is_paused:
+			pause.hide()
+			is_paused = false
+			get_tree().paused = false
+		elif !is_paused:
+			pause.show()
+			is_paused = true
+			get_tree().paused = true

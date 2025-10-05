@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://8dxuyy0anv4e"]
+[gd_scene load_steps=4 format=3 uid="uid://8dxuyy0anv4e"]
 
 [ext_resource type="Script" uid="uid://b0js15j0pl5bd" path="res://hud.gd" id="1_37p78"]
 [ext_resource type="PackedScene" uid="uid://cb20bndlexj0i" path="res://player/lives_container.tscn" id="2_64ctp"]
+[ext_resource type="PackedScene" uid="uid://ctute236ncmcc" path="res://pause.tscn" id="3_8sq4i"]
 
 [node name="HUD" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,3 +27,7 @@ text = "Score: "
 
 [node name="LivesContainer" parent="." instance=ExtResource("2_64ctp")]
 layout_mode = 0
+
+[node name="PAUSE" parent="." instance=ExtResource("3_8sq4i")]
+visible = false
+layout_mode = 1
