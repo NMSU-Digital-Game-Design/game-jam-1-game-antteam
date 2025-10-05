@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://grtn6p8k78gr"]
+[gd_scene load_steps=6 format=3 uid="uid://grtn6p8k78gr"]
 
 [ext_resource type="Script" uid="uid://chqvqo2jeu62o" path="res://level_loader.gd" id="1_73jjw"]
 [ext_resource type="PackedScene" uid="uid://8dxuyy0anv4e" path="res://hud.tscn" id="1_ox13j"]
 [ext_resource type="PackedScene" uid="uid://dk7figcgt4vjm" path="res://VictoriaAssets/level.tscn" id="1_rby3a"]
 [ext_resource type="PackedScene" uid="uid://cdx5umep5ftjn" path="res://player/player.tscn" id="2_ox13j"]
+[ext_resource type="PackedScene" uid="uid://wot65lfsk2eu" path="res://music/levelmusic.tscn" id="5_nfi1l"]
 
 [node name="LevelLoader" type="Node2D"]
 script = ExtResource("1_73jjw")
@@ -17,5 +18,8 @@ position = Vector2(0, -13)
 
 [node name="Player" parent="." instance=ExtResource("2_ox13j")]
 position = Vector2(559, 738)
+
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("5_nfi1l")]
+volume_db = -17.648
 
 [connection signal="respawn" from="Player" to="." method="find_closets_checkpoint"]

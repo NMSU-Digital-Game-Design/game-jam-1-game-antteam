@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://wot65lfsk2eu"]
+
+[ext_resource type="AudioStream" uid="uid://c4nqgx34mgc1v" path="res://music/Ant Music WAV.wav" id="1_8m3c0"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer"]
+stream = ExtResource("1_8m3c0")
+autoplay = true

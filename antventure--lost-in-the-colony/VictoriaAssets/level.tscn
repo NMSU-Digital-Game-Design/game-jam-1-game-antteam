@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dk7figcgt4vjm"]
+[gd_scene load_steps=17 format=3 uid="uid://dk7figcgt4vjm"]
 
 [ext_resource type="Script" uid="uid://dn6s1jm5bem6l" path="res://VictoriaAssets/level.gd" id="1_7x11g"]
 [ext_resource type="Texture2D" uid="uid://c1sfgl0qrcsxq" path="res://VictoriaAssets/backgrounds/nature-sky-bkg.png" id="1_u52ul"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b6de3i6aiyjag" path="res://RedAnt/red_ant.tscn" id="5_f8gwj"]
 [ext_resource type="PackedScene" uid="uid://bgtweea3hhxx5" path="res://RedAnt/ant_hill.tscn" id="6_bbgng"]
 [ext_resource type="PackedScene" uid="uid://dyvwjalfyalo" path="res://checkpoint.tscn" id="8_5mdms"]
+[ext_resource type="PackedScene" uid="uid://cjeey205ukgfo" path="res://leaf_upgrade.tscn" id="9_5mdms"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n6hdu"]
 texture = ExtResource("4_1ainy")
@@ -300,3 +301,6 @@ position = Vector2(800, 696)
 
 [node name="Checkpoint2" parent="Checkpoints" groups=["Checkpoint"] instance=ExtResource("8_5mdms")]
 position = Vector2(8131, 576)
+
+[node name="LeafUpgrade" parent="." instance=ExtResource("9_5mdms")]
+position = Vector2(5893, -351)
