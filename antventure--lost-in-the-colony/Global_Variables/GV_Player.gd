@@ -9,6 +9,7 @@ var player_health = 3 :
 var score:= 0
 var raise_health = 5
 var max_points:= score
+var in_combat = false
 
 func check_score(points: int):
 	score += points

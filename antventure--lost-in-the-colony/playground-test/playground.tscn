@@ -66,6 +66,9 @@ position = Vector2(516, -350)
 
 [node name="RedAnt" parent="." instance=ExtResource("10_ijab2")]
 position = Vector2(419, 162)
+max_health = 20
+difficulty_timer = 0.25
+able_to_move = false
 
 [node name="Enemies" type="Node" parent="."]
 
