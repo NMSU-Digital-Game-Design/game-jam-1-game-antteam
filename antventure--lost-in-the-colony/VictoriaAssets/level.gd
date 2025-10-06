@@ -6,6 +6,8 @@ signal end_game
 @onready var apple_slices: Node = $FoodItems/AppleSlices
 @onready var ant_hill_ants: Node = $AntHillAnts
 @onready var over_world_red_ants: Node = $OverWorldRedAnts
+@onready var grab_upgrade_level: Label = $Directions/GrabUpgradeLevel
+@onready var jump_upgrade: Label = $Directions/JumpUpgrade
 
 
 func _ready() -> void:
@@ -14,6 +16,11 @@ func _ready() -> void:
 	GvLevel.max_score = get_max_score()
 	connect("end_game", Callable(get_parent(), "end_game"))
 
+func _process(delta: float) -> void:
+	if GvPlayer.LeafUpgrade:
+		grab_upgrade_level.hide()
+	if GvPlayer.JumpUpgrade:
+		jump_upgrade.hide()
 func get_all_checkpoints() -> Array:
 	var checkpoints = []
 	for child in checkpoints_node.get_children():
