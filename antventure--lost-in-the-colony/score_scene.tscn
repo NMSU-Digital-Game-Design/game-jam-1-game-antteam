@@ -117,6 +117,7 @@ hframes = 3
 frame = 2
 
 [node name="ReturnToMainMenu" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.43316
@@ -144,3 +145,5 @@ one_shot = true
 one_shot = true
 
 [node name="AntTimer" type="Timer" parent="."]
+
+[connection signal="pressed" from="ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]
