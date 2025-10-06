@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dni5vtksouxs2"]
+
+[ext_resource type="Script" uid="uid://2kre0nbsrcf6" path="res://water_droplet.gd" id="1_h1mwo"]
+[ext_resource type="Texture2D" uid="uid://dq1epr7xvq8ci" path="res://playground-test/assets/assets.png" id="1_i5lu3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h1mwo"]
+radius = 8.06226
+
+[node name="WaterDroplet" type="Area2D"]
+script = ExtResource("1_h1mwo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 6)
+shape = SubResource("CircleShape2D_h1mwo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_i5lu3")
+hframes = 8
+vframes = 8
+frame = 3
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

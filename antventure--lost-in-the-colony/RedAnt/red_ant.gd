@@ -46,8 +46,9 @@ func take_hit():
 	enemy_health_bar.value = health
 	if health >= max_health:
 		print("RedAnt defeated!")
-		queue_free()   # remove ant
 		died.emit()
+		queue_free()   # remove ant
+
 
 func start_combat_timer():
 	player.connect("hit_enemy", Callable(self, "take_hit"))

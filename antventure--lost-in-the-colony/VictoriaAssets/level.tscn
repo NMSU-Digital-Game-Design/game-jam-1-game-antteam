@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dk7figcgt4vjm"]
+[gd_scene load_steps=61 format=3 uid="uid://dk7figcgt4vjm"]
 
 [ext_resource type="Script" uid="uid://dn6s1jm5bem6l" path="res://VictoriaAssets/level.gd" id="1_7x11g"]
 [ext_resource type="Texture2D" uid="uid://c1sfgl0qrcsxq" path="res://VictoriaAssets/backgrounds/nature-sky-bkg.png" id="1_u52ul"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bgtweea3hhxx5" path="res://RedAnt/ant_hill.tscn" id="6_bbgng"]
 [ext_resource type="PackedScene" uid="uid://dyvwjalfyalo" path="res://checkpoint.tscn" id="8_5mdms"]
 [ext_resource type="PackedScene" uid="uid://cjeey205ukgfo" path="res://leaf_upgrade.tscn" id="9_5mdms"]
+[ext_resource type="AudioStream" uid="uid://dpmwhyvrrp63y" path="res://music/This Beat is So Buns WAV.wav" id="10_t0vih"]
+[ext_resource type="PackedScene" uid="uid://dni5vtksouxs2" path="res://water_droplet.tscn" id="11_uqdc2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n6hdu"]
 texture = ExtResource("4_1ainy")
@@ -222,6 +224,526 @@ sources/0 = SubResource("TileSetAtlasSource_5mdms")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ab2bv"]
 size = Vector2(5416, 1651)
 
+[sub_resource type="Animation" id="Animation_wybqw"]
+resource_name = "fall"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(968, 260), Vector2(968, 753)]
+}
+
+[sub_resource type="Animation" id="Animation_4drnu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(968, 260)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kb40a"]
+_data = {
+&"RESET": SubResource("Animation_4drnu"),
+&"fall": SubResource("Animation_wybqw")
+}
+
+[sub_resource type="Animation" id="Animation_vjgi8"]
+resource_name = "falling"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1994, -278), Vector2(1994, 466)]
+}
+
+[sub_resource type="Animation" id="Animation_8pky1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1994, -258)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wvaty"]
+_data = {
+&"RESET": SubResource("Animation_8pky1"),
+&"falling": SubResource("Animation_vjgi8")
+}
+
+[sub_resource type="Animation" id="Animation_dwpei"]
+resource_name = "falling"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2493, -967), Vector2(2484, -462)]
+}
+
+[sub_resource type="Animation" id="Animation_ylkdp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2464, -967)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4eyg3"]
+_data = {
+&"RESET": SubResource("Animation_ylkdp"),
+&"falling": SubResource("Animation_dwpei")
+}
+
+[sub_resource type="Animation" id="Animation_g1rjd"]
+resource_name = "falling"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2483, -346), Vector2(2483, 209)]
+}
+
+[sub_resource type="Animation" id="Animation_m3mmi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2483, -346)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_77syk"]
+_data = {
+&"RESET": SubResource("Animation_m3mmi"),
+&"falling": SubResource("Animation_g1rjd")
+}
+
+[sub_resource type="Animation" id="Animation_j2ubv"]
+resource_name = "falling"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3174, -793), Vector2(3174, -106)]
+}
+
+[sub_resource type="Animation" id="Animation_daybk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3174, -793)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_53ni3"]
+_data = {
+&"RESET": SubResource("Animation_daybk"),
+&"falling": SubResource("Animation_j2ubv")
+}
+
+[sub_resource type="Animation" id="Animation_uqdc2"]
+resource_name = "falling"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3595, -858), Vector2(3595, -410)]
+}
+
+[sub_resource type="Animation" id="Animation_kb40a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3595, -858)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vjgi8"]
+_data = {
+&"RESET": SubResource("Animation_kb40a"),
+&"falling": SubResource("Animation_uqdc2")
+}
+
+[sub_resource type="Animation" id="Animation_wvaty"]
+resource_name = "falling"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3796, -1042), Vector2(3796, -573)]
+}
+
+[sub_resource type="Animation" id="Animation_4eyg3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3796, -1042)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g1rjd"]
+_data = {
+&"RESET": SubResource("Animation_4eyg3"),
+&"falling": SubResource("Animation_wvaty")
+}
+
+[sub_resource type="Animation" id="Animation_77syk"]
+resource_name = "falling"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3953, 243)]
+}
+
+[sub_resource type="Animation" id="Animation_53ni3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3953, -551)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_llluq"]
+_data = {
+&"RESET": SubResource("Animation_53ni3"),
+&"falling": SubResource("Animation_77syk")
+}
+
+[sub_resource type="Animation" id="Animation_l35qi"]
+resource_name = "falling"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4083, -447), Vector2(4083, 169)]
+}
+
+[sub_resource type="Animation" id="Animation_42ufl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4083, -447)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iwadd"]
+_data = {
+&"RESET": SubResource("Animation_42ufl"),
+&"falling": SubResource("Animation_l35qi")
+}
+
+[sub_resource type="Animation" id="Animation_rkmr2"]
+resource_name = "falling"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5584, -329), Vector2(5584, 749)]
+}
+
+[sub_resource type="Animation" id="Animation_illjg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5584, -329)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ccrtn"]
+_data = {
+&"RESET": SubResource("Animation_illjg"),
+&"falling": SubResource("Animation_rkmr2")
+}
+
+[sub_resource type="Animation" id="Animation_2irfs"]
+resource_name = "falling"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6899, -904), Vector2(6899, 179)]
+}
+
+[sub_resource type="Animation" id="Animation_uoe8e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6899, -904)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ptdcj"]
+_data = {
+&"RESET": SubResource("Animation_uoe8e"),
+&"falling": SubResource("Animation_2irfs")
+}
+
+[sub_resource type="Animation" id="Animation_q044v"]
+resource_name = "FALLING"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(7937, -521), Vector2(7937, 597)]
+}
+
+[sub_resource type="Animation" id="Animation_tvg2s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7937, -521)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6268q"]
+_data = {
+&"FALLING": SubResource("Animation_q044v"),
+&"RESET": SubResource("Animation_tvg2s")
+}
+
+[sub_resource type="Animation" id="Animation_rmnpu"]
+resource_name = "falling"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(8243, -441), Vector2(8243, 460)]
+}
+
+[sub_resource type="Animation" id="Animation_ms324"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8243, -441)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dmfop"]
+_data = {
+&"RESET": SubResource("Animation_ms324"),
+&"falling": SubResource("Animation_rmnpu")
+}
+
+[sub_resource type="Animation" id="Animation_mg2uk"]
+resource_name = "falling"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1326, -565), Vector2(1326, 677)]
+}
+
+[sub_resource type="Animation" id="Animation_e2n5t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1326, -565)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c7ikp"]
+_data = {
+&"RESET": SubResource("Animation_e2n5t"),
+&"falling": SubResource("Animation_mg2uk")
+}
+
 [node name="level" type="Node2D"]
 script = ExtResource("1_7x11g")
 
@@ -304,3 +826,138 @@ position = Vector2(8131, 576)
 
 [node name="LeafUpgrade" parent="." instance=ExtResource("9_5mdms")]
 position = Vector2(5893, -351)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(5733, 1082)
+stream = ExtResource("10_t0vih")
+autoplay = true
+max_distance = 182.0
+bus = &"RAVE"
+
+[node name="WaterDroplets" type="Node" parent="."]
+
+[node name="WaterDroplet" parent="WaterDroplets" instance=ExtResource("11_uqdc2")]
+position = Vector2(968, 260)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WaterDroplets/WaterDroplet"]
+libraries = {
+&"": SubResource("AnimationLibrary_kb40a")
+}
+autoplay = "fall"
+
+[node name="WaterDroplet3" parent="WaterDroplets" instance=ExtResource("11_uqdc2")]
+position = Vector2(1994, -258)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WaterDroplets/WaterDroplet3"]
+libraries = {
+&"": SubResource("AnimationLibrary_wvaty")
+}
+autoplay = "falling"
+
+[node name="WaterDroplet4" parent="WaterDroplets" instance=ExtResource("11_uqdc2")]
+position = Vector2(2464, -967)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WaterDroplets/WaterDroplet4"]
+libraries = {
+&"": SubResource("AnimationLibrary_4eyg3")
+}
+autoplay = "falling"
+
+[node name="WaterDroplet5" parent="WaterDroplets" instance=ExtResource("11_uqdc2")]
+position = Vector2(2483, -346)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WaterDroplets/WaterDroplet5"]
+libraries = {
+&"": SubResource("AnimationLibrary_77syk")
+}
+autoplay = "falling"
+
+[node name="WaterDroplet6" parent="WaterDroplets" instance=ExtResource("11_uqdc2")]
+position = Vector2(3174, -793)
+
+[node name="AnimationTree" type="AnimationPlayer" parent="WaterDroplets/WaterDroplet6"]
+libraries = {
+&"": SubResource("AnimationLibrary_53ni3")
+}
+autoplay = "falling"
+
+[node name="WaterDroplet7" parent="WaterDroplets" instance=ExtResource("11_uqdc2")]
+position = Vector2(3595, -858)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WaterDroplets/WaterDroplet7"]
+libraries = {
+&"": SubResource("AnimationLibrary_vjgi8")
+}
+autoplay = "falling"
+
+[node name="WaterDroplet8" parent="WaterDroplets" instance=ExtResource("11_uqdc2")]
+position = Vector2(3796, -1042)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WaterDroplets/WaterDroplet8"]
+libraries = {
+&"": SubResource("AnimationLibrary_g1rjd")
+}
+autoplay = "falling"
+
+[node name="WaterDroplet9" parent="WaterDroplets" instance=ExtResource("11_uqdc2")]
+position = Vector2(3953, -551)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WaterDroplets/WaterDroplet9"]
+libraries = {
+&"": SubResource("AnimationLibrary_llluq")
+}
+autoplay = "falling"
+
+[node name="WaterDroplet10" parent="WaterDroplets" instance=ExtResource("11_uqdc2")]
+position = Vector2(4083, -447)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WaterDroplets/WaterDroplet10"]
+libraries = {
+&"": SubResource("AnimationLibrary_iwadd")
+}
+autoplay = "falling"
+
+[node name="WaterDroplet11" parent="WaterDroplets" instance=ExtResource("11_uqdc2")]
+position = Vector2(5584, -329)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WaterDroplets/WaterDroplet11"]
+libraries = {
+&"": SubResource("AnimationLibrary_ccrtn")
+}
+autoplay = "falling"
+
+[node name="WaterDroplet12" parent="WaterDroplets" instance=ExtResource("11_uqdc2")]
+position = Vector2(6899, -904)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WaterDroplets/WaterDroplet12"]
+libraries = {
+&"": SubResource("AnimationLibrary_ptdcj")
+}
+autoplay = "falling"
+
+[node name="WaterDroplet13" parent="WaterDroplets" instance=ExtResource("11_uqdc2")]
+position = Vector2(7937, -521)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WaterDroplets/WaterDroplet13"]
+libraries = {
+&"": SubResource("AnimationLibrary_6268q")
+}
+autoplay = "FALLING"
+
+[node name="WaterDroplet14" parent="WaterDroplets" instance=ExtResource("11_uqdc2")]
+position = Vector2(8243, -441)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WaterDroplets/WaterDroplet14"]
+libraries = {
+&"": SubResource("AnimationLibrary_dmfop")
+}
+autoplay = "falling"
+
+[node name="WaterDroplet15" parent="WaterDroplets" instance=ExtResource("11_uqdc2")]
+position = Vector2(1326, -565)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WaterDroplets/WaterDroplet15"]
+libraries = {
+&"": SubResource("AnimationLibrary_c7ikp")
+}
+autoplay = "falling"

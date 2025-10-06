@@ -3,6 +3,8 @@ extends Node2D
 @onready var all_checkpoints = level.get_all_checkpoints()
 @onready var player: CharacterBody2D = $Player
 
+func _ready() -> void:
+	print("Health: ", GvPlayer.player_health)
 func respawn_player(pos: Vector2):
 	player.global_position = pos
 

@@ -10,6 +10,7 @@
 script = ExtResource("1_73jjw")
 
 [node name="Overlay" type="CanvasLayer" parent="."]
+layer = 3
 
 [node name="HUD" parent="Overlay" instance=ExtResource("1_ox13j")]
 
@@ -17,7 +18,7 @@ script = ExtResource("1_73jjw")
 position = Vector2(0, -13)
 
 [node name="Player" parent="." instance=ExtResource("2_ox13j")]
-position = Vector2(559, 738)
+position = Vector2(7045, 701)
 
 [node name="AudioStreamPlayer2D" parent="." instance=ExtResource("5_nfi1l")]
 volume_db = -17.648

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cxomqc3r7fk8o"]
+[gd_scene load_steps=16 format=3 uid="uid://cxomqc3r7fk8o"]
 
 [ext_resource type="Script" uid="uid://c1bdn025qdkkv" path="res://playground-test/playground.gd" id="1_ac5cj"]
 [ext_resource type="TileSet" uid="uid://copcsedvakhku" path="res://playground-test/playground.tres" id="2_w2dbe"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c4mud5gjub0mh" path="res://playground-test/spikes.tscn" id="8_cn5ks"]
 [ext_resource type="PackedScene" uid="uid://cjeey205ukgfo" path="res://leaf_upgrade.tscn" id="8_sv118"]
 [ext_resource type="PackedScene" uid="uid://dukima5ha1ptt" path="res://pick-ups/apple_slice.tscn" id="9_sv118"]
+[ext_resource type="PackedScene" uid="uid://dni5vtksouxs2" path="res://water_droplet.tscn" id="10_5bfmr"]
 [ext_resource type="PackedScene" uid="uid://b6de3i6aiyjag" path="res://RedAnt/red_ant.tscn" id="10_ijab2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ijab2"]
@@ -204,5 +205,8 @@ shape = SubResource("RectangleShape2D_ijab2")
 
 [node name="LeafUpgrade" parent="." instance=ExtResource("8_sv118")]
 position = Vector2(836, 158)
+
+[node name="WaterDroplet" parent="." instance=ExtResource("10_5bfmr")]
+position = Vector2(201, 55)
 
 [connection signal="timeout" from="AntHill/RedAntTimer" to="AntHill" method="_on_red_ant_timer_timeout"]
