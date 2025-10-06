@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bdprduvu6wlyw"]
+
+[node name="SceneScore" type="CanvasLayer"]
+
+[node name="control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Score..."
+
+[node name="ColorRect" type="ColorRect" parent="control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

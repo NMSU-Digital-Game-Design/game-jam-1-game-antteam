@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 GvPlayer="*res://Global_Variables/GV_Player.gd"
 Loading="*res://loading/loading.tscn"
 
+[gui]
+
+theme/custom_font="uid://4odabriu460x"
+
 [input]
 
 left={

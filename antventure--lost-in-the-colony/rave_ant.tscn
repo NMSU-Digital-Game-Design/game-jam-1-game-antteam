@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cytiutti6gv27"]
+
+[ext_resource type="Script" uid="uid://6rpilfqm2nyl" path="res://rave_ant.gd" id="1_gdgyg"]
+[ext_resource type="Texture2D" uid="uid://bwpokouqtspwg" path="res://player/mob asset sheet/mob.png" id="2_dms5h"]
+
+[node name="RaveAnt" type="Node2D"]
+script = ExtResource("1_gdgyg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_dms5h")
+region_enabled = true
+region_rect = Rect2(0, 46, 32, 18)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 5.0
+offset_top = 8.0
+offset_right = 45.0
+offset_bottom = 48.0
+rotation = -0.774521
+scale = Vector2(0.240001, 0.0587186)
+color = Color(0.56, 0, 0, 1)

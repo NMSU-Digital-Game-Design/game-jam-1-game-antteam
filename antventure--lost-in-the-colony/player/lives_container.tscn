@@ -4,4 +4,5 @@
 
 [node name="LivesContainer" type="HBoxContainer"]
 offset_right = 4.0
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_kvtjp")

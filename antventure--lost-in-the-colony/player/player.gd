@@ -6,10 +6,12 @@ signal respawn(pos: Vector2)
 @onready var player_camera: Camera2D = $PlayerCamera
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hit_box: Area2D = $HitBox
+@onready var leaf: Sprite2D = $Leaf
 
 var current_enemy: Node = null   # store the RedAnt during combat
 var lives := 3
 var direction_facing := 1
+var wall_locked:= false
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -19,6 +21,11 @@ func _physics_process(delta: float) -> void:
 		# adds wall climb mechanic
 		if is_on_wall():
 			var direction := Input.get_axis("up", "down")
+			animated_sprite_2d.play("climbing")
+			if direction > 0:
+				animated_sprite_2d.flip_h = true
+			elif direction < 0: 
+				animated_sprite_2d.flip_h = false
 			if direction:
 				velocity.y = direction * SPEED
 			else:
@@ -121,3 +128,18 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 	if !GvPlayer.LeafUpgrade:
 		GvPlayer.player_health -= 1
 		emit_signal("respawn", global_position)
+	else:
+		leaf.show()
+
+
+func _on_hit_box_body_exited(body: Node2D) -> void:
+	if GvPlayer.LeafUpgrade:
+		leaf.hide()
+
+func in_ant_hill():
+	player_camera.zoom_in_underground()
+	player_camera.in_underground = true
+
+func leaving_ant_hill():
+	player_camera.in_underground = false
+	player_camera.return_to_normal()

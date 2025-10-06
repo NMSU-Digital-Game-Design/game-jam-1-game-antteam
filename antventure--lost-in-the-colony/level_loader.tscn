@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://grtn6p8k78gr"]
+[gd_scene load_steps=7 format=3 uid="uid://grtn6p8k78gr"]
 
 [ext_resource type="Script" uid="uid://chqvqo2jeu62o" path="res://level_loader.gd" id="1_73jjw"]
 [ext_resource type="PackedScene" uid="uid://8dxuyy0anv4e" path="res://hud.tscn" id="1_ox13j"]
 [ext_resource type="PackedScene" uid="uid://dk7figcgt4vjm" path="res://VictoriaAssets/level.tscn" id="1_rby3a"]
 [ext_resource type="PackedScene" uid="uid://cdx5umep5ftjn" path="res://player/player.tscn" id="2_ox13j"]
+[ext_resource type="PackedScene" uid="uid://cnrn0wsujyka1" path="res://ending.tscn" id="3_dc8xe"]
 [ext_resource type="PackedScene" uid="uid://wot65lfsk2eu" path="res://music/levelmusic.tscn" id="5_nfi1l"]
 
 [node name="LevelLoader" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_73jjw")
 
 [node name="Overlay" type="CanvasLayer" parent="."]
@@ -14,13 +16,27 @@ layer = 3
 
 [node name="HUD" parent="Overlay" instance=ExtResource("1_ox13j")]
 
-[node name="level" parent="." instance=ExtResource("1_rby3a")]
-position = Vector2(0, -13)
+[node name="Ending" parent="Overlay" instance=ExtResource("3_dc8xe")]
+process_mode = 3
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("2_ox13j")]
-position = Vector2(7045, 701)
+process_mode = 1
+z_index = 2
+position = Vector2(450, 725)
+
+[node name="level" parent="." instance=ExtResource("1_rby3a")]
+process_mode = 1
+position = Vector2(0, -13)
 
 [node name="AudioStreamPlayer2D" parent="." instance=ExtResource("5_nfi1l")]
+process_mode = 1
 volume_db = -17.648
 
+[node name="FinalScoreGo" type="Timer" parent="."]
+process_mode = 3
+wait_time = 5.0
+one_shot = true
+
 [connection signal="respawn" from="Player" to="." method="find_closets_checkpoint"]
+[connection signal="timeout" from="FinalScoreGo" to="." method="_on_final_score_go_timeout"]

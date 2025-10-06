@@ -3,7 +3,7 @@
 extends Control
 
 @onready var pause: Control = $PAUSE
-@onready var play_info: ColorRect = $PAUSE/PlayInfo
+@onready var play_info: Sprite2D = $PAUSE/PlayInfoImg
 
 @onready var score_label: Label = $ScoreLabel
 var is_paused:= false

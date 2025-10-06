@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdx5umep5ftjn"]
+[gd_scene load_steps=11 format=3 uid="uid://cdx5umep5ftjn"]
 
 [ext_resource type="Script" uid="uid://dn6uhnqxxldvo" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://bwpokouqtspwg" path="res://player/mob asset sheet/mob.png" id="2_g1dw6"]
 [ext_resource type="PackedScene" uid="uid://1vwi2qvj1atr" path="res://player/player_camera.tscn" id="3_g1dw6"]
+[ext_resource type="Texture2D" uid="uid://dq1epr7xvq8ci" path="res://playground-test/assets/assets.png" id="4_yw30f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yw30f"]
 atlas = ExtResource("2_g1dw6")
@@ -50,6 +51,7 @@ size = Vector2(57.1429, 17.1429)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(0.7, 0.7)
+collision_layer = 129
 collision_mask = 7
 script = ExtResource("1_rkbax")
 
@@ -65,6 +67,11 @@ scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_g1dw6")
 
 [node name="PlayerCamera" parent="." instance=ExtResource("3_g1dw6")]
+limit_left = 377
+limit_top = -755
+limit_right = 9142
+limit_bottom = 890
+limit_smoothed = true
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_mask = 8
@@ -74,4 +81,13 @@ position = Vector2(-1.42857, -4.28571)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_g1dw6")
 
+[node name="Leaf" type="Sprite2D" parent="."]
+visible = false
+rotation = 3.13151
+scale = Vector2(2.51628, 0.789141)
+texture = ExtResource("4_yw30f")
+region_enabled = true
+region_rect = Rect2(160, 32, 32, 32)
+
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="body_exited" from="HitBox" to="." method="_on_hit_box_body_exited"]

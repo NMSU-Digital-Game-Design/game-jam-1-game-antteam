@@ -4,10 +4,10 @@
 
 [node name="LiveGUI" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(16, 14)
+custom_minimum_size = Vector2(32, 30)
 offset_right = 16.0
 offset_bottom = 14.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(8, 7)
+position = Vector2(16, 14)
 texture = ExtResource("1_u0q7r")

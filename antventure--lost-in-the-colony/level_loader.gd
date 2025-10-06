@@ -2,6 +2,10 @@ extends Node2D
 @onready var level: Node2D = $level
 @onready var all_checkpoints = level.get_all_checkpoints()
 @onready var player: CharacterBody2D = $Player
+@onready var final_score_go: Timer = $FinalScoreGo
+@onready var ending: Control = $Overlay/Ending
+
+@onready var SCORE_SCENE = "res://score_scene.tscn"
 
 func _ready() -> void:
 	print("Health: ", GvPlayer.player_health)
@@ -25,3 +29,19 @@ func find_closets_checkpoint(position: Vector2):
 			closest_distance = dist
 	print(str("Respawning to: ", closet.global_position))
 	respawn_player(closet.global_position)
+
+func end_game():
+	
+	final_score_go.start()
+	get_tree().paused = true
+	ending.show()
+	print("Waiting for Timer")
+	
+
+
+func _on_final_score_go_timeout() -> void:
+	print("Time Ended")
+	get_tree().paused = false
+	Loading.load_scene(SCORE_SCENE)
+	
+	
