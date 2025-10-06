@@ -4,6 +4,7 @@ extends Node2D
 @export var max_health := 10
 @export var difficulty_timer = .5
 @export var able_to_move:= true
+var points:= 50
 
 @onready var enemy_health_bar: ProgressBar = $EnemyHealthBar
 @onready var fight_timer: Timer = $FightTimer
@@ -46,6 +47,8 @@ func take_hit():
 	enemy_health_bar.value = health
 	if health >= max_health:
 		print("RedAnt defeated!")
+		GvPlayer.check_score(points)
+		GvPlayer.ant_defeated += 1
 		died.emit()
 		queue_free()   # remove ant
 
@@ -80,3 +83,6 @@ func _on_follow_player_body_exited(body: Node2D) -> void:
 func _on_fight_timer_timeout() -> void:
 	health -= 1
 	enemy_health_bar.value = health
+	if health == max_health:
+		won.emit()
+		GvPlayer.decrease_score(points)

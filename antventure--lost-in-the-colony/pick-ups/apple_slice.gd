@@ -7,4 +7,5 @@ func _on_body_entered(body: Node2D) -> void:
 	# adds to the score in the Globabl Variables for Player
 	# deletes the sugar cube
 	GvPlayer.check_score(points)
+	GvPlayer.apple_slices += 1
 	queue_free()

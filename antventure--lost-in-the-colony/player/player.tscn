@@ -89,5 +89,13 @@ texture = ExtResource("4_yw30f")
 region_enabled = true
 region_rect = Rect2(160, 32, 32, 32)
 
+[node name="LeftRayCast" type="RayCast2D" parent="."]
+position = Vector2(-30, 0)
+target_position = Vector2(-20, 0)
+
+[node name="RightRayCast" type="RayCast2D" parent="."]
+position = Vector2(24.2857, 0)
+target_position = Vector2(18.5714, 0)
+
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="HitBox" to="." method="_on_hit_box_body_exited"]

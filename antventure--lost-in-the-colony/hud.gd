@@ -39,3 +39,7 @@ func _on_how_to_play_button_pressed() -> void:
 	elif !how_to_play_on:
 		play_info.show()
 		how_to_play_on = true
+
+
+func _on_stuck_pressed() -> void:
+	pass # Replace with function body.

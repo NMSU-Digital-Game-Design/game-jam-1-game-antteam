@@ -7,11 +7,15 @@ var player_health = 3 :
 		player_health = clampi(value,0,max_player_health)
 
 var score:= 0
-var raise_health = 5
+var raise_health = 25
 var max_points:= score
 var in_combat = false
 var player_end_game:= false
 var LeafUpgrade:= false
+var JumpUpgrade:= false
+var sugar_cube:= 0
+var apple_slices:= 0
+var ant_defeated:= 0
 
 func check_score(points: int):
 	score += points

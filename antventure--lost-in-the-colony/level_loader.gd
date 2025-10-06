@@ -4,7 +4,7 @@ extends Node2D
 @onready var player: CharacterBody2D = $Player
 @onready var final_score_go: Timer = $FinalScoreGo
 @onready var ending: Control = $Overlay/Ending
-
+@onready var death_screen ="res://death_screen.tscn" 
 @onready var SCORE_SCENE = "res://score_scene.tscn"
 
 func _ready() -> void:
@@ -44,4 +44,13 @@ func _on_final_score_go_timeout() -> void:
 	get_tree().paused = false
 	Loading.load_scene(SCORE_SCENE)
 	
-	
+func died():
+	print("Player Died!")
+	Loading.load_scene(death_screen)
+	GvPlayer.ant_defeated = 0
+	GvPlayer.sugar_cube = 0
+	GvPlayer.apple_slices = 0
+	GvPlayer.LeafUpgrade = false
+	GvPlayer.JumpUpgrade = false
+	GvPlayer.score = false
+	GvPlayer.player_health = 3

@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="ANTventure: Lost in the Colony"
+config/name="ANTventureLostintheColony"
 run/main_scene="uid://dw7mdhopeau5k"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GvPlayer="*res://Global_Variables/GV_Player.gd"
 Loading="*res://loading/loading.tscn"
+GvLevel="*res://Global_Variables/GV_Level.gd"
 
 [gui]
 

@@ -7,15 +7,25 @@ signal respawn(pos: Vector2)
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hit_box: Area2D = $HitBox
 @onready var leaf: Sprite2D = $Leaf
+@onready var left_ray_cast: RayCast2D = $LeftRayCast
+@onready var right_ray_cast: RayCast2D = $RightRayCast
 
 var current_enemy: Node = null   # store the RedAnt during combat
 var lives := 3
-var direction_facing := 1
+
 var wall_locked:= false
+var on_wall = false
+var wall_direction = 0
+
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+var JUMP_VELOCITY = -400.0
+
+func _ready() -> void:
+	connect("out_of_lives", Callable(get_parent(), "died"))
 
 func _physics_process(delta: float) -> void:
+	if GvPlayer.player_health == 0:
+		out_of_lives.emit()
 	# Add the gravity.
 	if !GvPlayer.in_combat:
 		# adds wall climb mechanic
@@ -23,30 +33,31 @@ func _physics_process(delta: float) -> void:
 			var direction := Input.get_axis("up", "down")
 			animated_sprite_2d.play("climbing")
 			if direction > 0:
-				animated_sprite_2d.flip_h = true
+				animated_sprite_2d.flip_v = false
 			elif direction < 0: 
-				animated_sprite_2d.flip_h = false
+				animated_sprite_2d.flip_v = true
 			if direction:
 				velocity.y = direction * SPEED
 			else:
 				velocity.y = move_toward(velocity.y, 0, SPEED)
 			if Input.is_action_pressed("left") or Input.is_action_pressed("right") and Input.is_action_pressed("jump"):
 				direction = Input.get_axis("left", "right")
-				direction_facing = direction
+				wall_direction = direction
 
 				if direction:
 					velocity.x = direction * SPEED
 					velocity.y = jump()
-		
+			elif !is_on_wall():
+				animated_sprite_2d.flip_v = false
 		# applies gravity and allows player to move around while falling
-		elif not is_on_floor():
+		elif not is_on_floor() and !is_on_wall():
 			velocity += get_gravity() * delta
 			var direction := Input.get_axis("left", "right")
 			if direction == 0:
 				animated_sprite_2d.pause()
 			else:
 				animated_sprite_2d.play("walking")
-			direction_facing = direction
+			wall_direction = direction
 
 			if direction:
 				velocity.x = direction * SPEED
@@ -57,25 +68,24 @@ func _physics_process(delta: float) -> void:
 			# Handle jump.
 			if Input.is_action_pressed("jump") and is_on_floor():
 				velocity.y = jump()
+			if !is_on_wall() and is_on_floor():
+				animated_sprite_2d.flip_v = false
 
-
-			# Get the input direction and handle the movement/deceleration.
-			# As good practice, you should replace UI actions with custom gameplay actions.
-			var direction := Input.get_axis("left", "right")
-			if direction == 0:
-				animated_sprite_2d.pause()
-			else:
-				animated_sprite_2d.play("walking")
-			if direction > 0: 
-				animated_sprite_2d.flip_h = false
-			elif direction <0:
-				animated_sprite_2d.flip_h = true
-			direction_facing = direction
-			if direction:
-				velocity.x = direction * SPEED
-			else:
-				velocity.x = move_toward(velocity.x, 0, SPEED)
-				
+				var direction := Input.get_axis("left", "right")
+				if direction == 0:
+					animated_sprite_2d.pause()
+				else:
+					animated_sprite_2d.play("walking")
+				if direction > 0: 
+					animated_sprite_2d.flip_h = false
+				elif direction <0:
+					animated_sprite_2d.flip_h = true
+				wall_direction = direction
+				if direction:
+					velocity.x = direction * SPEED
+				else:
+					velocity.x = move_toward(velocity.x, 0, SPEED)
+					
 
 		move_and_slide()
 	elif GvPlayer.in_combat:
@@ -95,7 +105,8 @@ func _physics_process(delta: float) -> void:
 
 func jump():
 	return JUMP_VELOCITY
-	
+func wall_jump():
+	pass
 ##### COMBAT #####
 
 # Player will enter combat and will connect the hit enemy signal to the current
@@ -104,7 +115,7 @@ func enter_combat():
 	GvPlayer.in_combat = true
 	connect("hit_enemy", Callable(current_enemy, "take_hit"))
 	print("Entering combat mode... Player can’t move now.")
-	player_camera.zoom_in_on_battle(direction_facing)
+	player_camera.zoom_in_on_battle(wall_direction)
 
 # Player will exit out of combat and will set the current_enemy to null
 

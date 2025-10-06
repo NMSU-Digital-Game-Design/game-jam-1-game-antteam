@@ -54,6 +54,7 @@ icon = ExtResource("5_ni4cm")
 flat = true
 
 [node name="Button" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 895.0
 offset_top = 404.0
