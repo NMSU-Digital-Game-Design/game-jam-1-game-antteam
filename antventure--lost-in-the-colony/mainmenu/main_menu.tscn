@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnf5y2lacj7mk"]
+[gd_scene load_steps=7 format=3 uid="uid://cnf5y2lacj7mk"]
 
 [ext_resource type="Script" uid="uid://c5tv4u086x7fd" path="res://main_menu.gd" id="1_yxufh"]
 [ext_resource type="Texture2D" uid="uid://xa6essads2em" path="res://mainmenu/assets/mainMenueItems/main_menue.png" id="2_7at75"]
 [ext_resource type="Texture2D" uid="uid://6txk2r43ker5" path="res://mainmenu/assets/mainMenueItems/start_button.png" id="3_yylb4"]
 [ext_resource type="Texture2D" uid="uid://dw6c0yswnvp3w" path="res://mainmenu/assets/mainMenueItems/credits_button.png" id="4_la1qf"]
 [ext_resource type="Texture2D" uid="uid://qke27c0g7h7x" path="res://mainmenu/assets/mainMenueItems/exit_button.png" id="5_ni4cm"]
+[ext_resource type="Texture2D" uid="uid://dqg5nh4mvsxxs" path="res://mainmenu/assets/mainMenueItems/credits.png" id="6_7at75"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -78,6 +79,11 @@ offset_top = 562.0
 offset_right = 601.0
 offset_bottom = 593.0
 text = "Return"
+
+[node name="Credits" type="Sprite2D" parent="Credits"]
+z_index = 10
+position = Vector2(576, 350)
+texture = ExtResource("6_7at75")
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditButtons" to="." method="_on_credit_buttons_pressed"]
