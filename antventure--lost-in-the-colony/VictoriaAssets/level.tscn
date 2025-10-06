@@ -778,12 +778,12 @@ motion_scale = Vector2(0.5, 1)
 motion_mirroring = Vector2(2500, 0)
 
 [node name="Nature-sky-bkg" type="Sprite2D" parent="Map/ParallaxBackground/ParallaxLayer"]
-position = Vector2(890.812, 28.9991)
-scale = Vector2(2.43231, 1.9)
+position = Vector2(1244.8, 15)
+scale = Vector2(1.87882, 1.9)
 texture = ExtResource("1_u52ul")
 
 [node name="Nature-sky-bkg2" type="Sprite2D" parent="Map/ParallaxBackground/ParallaxLayer"]
-position = Vector2(6298, 19)
+position = Vector2(6277, 11)
 scale = Vector2(1.875, 1.875)
 texture = ExtResource("1_u52ul")
 
@@ -812,9 +812,9 @@ layer_0/tile_data = PackedInt32Array(1507356, 131072, 0, 1507357, 131072, 0, 150
 [node name="TextureRect" type="TextureRect" parent="Map"]
 z_index = -1
 offset_left = -754.0
-offset_top = -709.0
+offset_top = -1398.0
 offset_right = 10390.0
-offset_bottom = 779.0
+offset_bottom = 791.0
 texture = ExtResource("3_f2txt")
 
 [node name="AntHillAnts" type="Node" parent="."]
