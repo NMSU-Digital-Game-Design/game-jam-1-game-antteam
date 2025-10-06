@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 @onready var leaf_sprite: Sprite2D = $control/VBoxContainer/Upgrades/LeafUpgrade/Sprite2D
 @onready var jump_sprite: Sprite2D = $control/VBoxContainer/Upgrades/JumpUpgrade/Sprite2D
 @onready var upgrade_timer: Timer = $UpgradeTimer
