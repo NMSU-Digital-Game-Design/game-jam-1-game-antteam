@@ -5,53 +5,51 @@
 [ext_resource type="Texture2D" uid="uid://ct5iljwod78ih" path="res://player/assets/heart-sprite-full-health.png" id="3_bkbli"]
 [ext_resource type="Texture2D" uid="uid://dgo1wvfqemlix" path="res://assets/stars.png" id="4_t00iq"]
 
-[node name="SceneScore" type="CanvasLayer"]
-script = ExtResource("1_5hmok")
-
-[node name="control" type="Control" parent="."]
+[node name="ScoreScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5hmok")
 
-[node name="ColorRect" type="ColorRect" parent="control"]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 1153.0
 offset_bottom = 644.0
 color = Color(0.4, 0.545098, 0.341176, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 74.0
 offset_top = 97.0
 offset_right = 194.0
 offset_bottom = 137.0
 
-[node name="FinalPoints" type="Label" parent="control/VBoxContainer"]
+[node name="FinalPoints" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
 text = "FINAL POINTS:"
 
-[node name="FoodLabel" type="Label" parent="control/VBoxContainer"]
+[node name="FoodLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
 text = "FOOD OBTAINED:"
 
-[node name="Upgrades" type="HBoxContainer" parent="control/VBoxContainer"]
+[node name="Upgrades" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="control/VBoxContainer/Upgrades"]
+[node name="Label3" type="Label" parent="VBoxContainer/Upgrades"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
 text = "UPGRADES?"
 
-[node name="LeafUpgrade" type="Panel" parent="control/VBoxContainer/Upgrades"]
+[node name="LeafUpgrade" type="Panel" parent="VBoxContainer/Upgrades"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="control/VBoxContainer/Upgrades/LeafUpgrade"]
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Upgrades/LeafUpgrade"]
 visible = false
 position = Vector2(3, 0)
 texture = ExtResource("2_0gct6")
@@ -60,21 +58,21 @@ region_enabled = true
 region_rect = Rect2(196, 128, 27, 32)
 region_filter_clip_enabled = true
 
-[node name="JumpUpgrade" type="Panel" parent="control/VBoxContainer/Upgrades"]
+[node name="JumpUpgrade" type="Panel" parent="VBoxContainer/Upgrades"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="control/VBoxContainer/Upgrades/JumpUpgrade"]
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Upgrades/JumpUpgrade"]
 visible = false
 texture = ExtResource("3_bkbli")
 centered = false
 
-[node name="AntLabels" type="Label" parent="control/VBoxContainer"]
+[node name="AntLabels" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
 text = "ANTS DEFEATED: "
 
-[node name="Stars" type="HBoxContainer" parent="control"]
+[node name="Stars" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 332.0
 offset_top = 251.0
@@ -82,43 +80,43 @@ offset_right = 436.0
 offset_bottom = 291.0
 scale = Vector2(5, 5)
 
-[node name="Star1" type="Panel" parent="control/Stars"]
+[node name="Star1" type="Panel" parent="Stars"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="control/Stars/Star1"]
+[node name="Sprite2D" type="Sprite2D" parent="Stars/Star1"]
 position = Vector2(0, 4)
 texture = ExtResource("4_t00iq")
 centered = false
 hframes = 3
 frame = 2
 
-[node name="Star2" type="Panel" parent="control/Stars"]
+[node name="Star2" type="Panel" parent="Stars"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="control/Stars/Star2"]
+[node name="Sprite2D" type="Sprite2D" parent="Stars/Star2"]
 position = Vector2(0, 4)
 texture = ExtResource("4_t00iq")
 centered = false
 hframes = 3
 frame = 2
 
-[node name="Star3" type="Panel" parent="control/Stars"]
+[node name="Star3" type="Panel" parent="Stars"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="control/Stars/Star3"]
+[node name="Sprite2D" type="Sprite2D" parent="Stars/Star3"]
 position = Vector2(0, 4)
 texture = ExtResource("4_t00iq")
 centered = false
 hframes = 3
 frame = 2
 
-[node name="ReturnToMainMenu" type="Button" parent="control"]
+[node name="ReturnToMainMenu" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.43316
@@ -146,8 +144,3 @@ one_shot = true
 one_shot = true
 
 [node name="AntTimer" type="Timer" parent="."]
-
-[connection signal="timeout" from="Loading" to="." method="_on_loading_timeout"]
-[connection signal="timeout" from="UpgradeTimer" to="." method="_on_upgrade_timer_timeout"]
-[connection signal="timeout" from="FoodTimer" to="." method="_on_food_timer_timeout"]
-[connection signal="timeout" from="AntTimer" to="." method="_on_ant_timer_timeout"]
