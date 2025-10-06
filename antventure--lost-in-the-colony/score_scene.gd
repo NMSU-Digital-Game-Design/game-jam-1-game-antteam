@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var food_label: Label = $control/VBoxContainer/FoodLabel
 @onready var upgrades: HBoxContainer = $control/VBoxContainer/Upgrades
 @onready var ant_labels: Label = $control/VBoxContainer/AntLabels
+@onready var return_to_main_menu: Button = $ReturnToMainMenu
 
 @onready var star_1: Sprite2D = $control/Stars/Star1/Sprite2D
 @onready var star_2: Sprite2D = $control/Stars/Star2/Sprite2D
@@ -92,3 +93,7 @@ func calculating_score():
 		star_1.frame = 0
 		star_2.frame = 0
 		star_3.frame = 0
+	return_to_main_menu.show()
+
+func _on_return_to_main_menu_pressed() -> void:
+	Loading.load_scene("res://mainmenu/main_menu.tscn")
