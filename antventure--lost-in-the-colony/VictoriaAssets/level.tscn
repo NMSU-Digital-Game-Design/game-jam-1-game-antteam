@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dk7figcgt4vjm"]
+[gd_scene load_steps=67 format=3 uid="uid://dk7figcgt4vjm"]
 
 [ext_resource type="Script" uid="uid://dn6s1jm5bem6l" path="res://VictoriaAssets/level.gd" id="1_7x11g"]
 [ext_resource type="Texture2D" uid="uid://c1sfgl0qrcsxq" path="res://VictoriaAssets/backgrounds/nature-sky-bkg.png" id="1_u52ul"]
@@ -762,6 +762,9 @@ size = Vector2(5655, 1600)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kb40a"]
 size = Vector2(412, 753)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vjgi8"]
+distance = 73.9391
 
 [node name="level" type="Node2D"]
 script = ExtResource("1_7x11g")
@@ -1747,6 +1750,13 @@ rotation = 3.13438
 [node name="RaveAnt2" parent="Rave" instance=ExtResource("14_vjgi8")]
 position = Vector2(5539, 2292)
 flip = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(130, 650)
+rotation = 1.57297
+shape = SubResource("WorldBoundaryShape2D_vjgi8")
 
 [connection signal="body_entered" from="AntHilll" to="." method="_on_ant_hilll_body_entered"]
 [connection signal="body_exited" from="AntHilll" to="." method="_on_ant_hilll_body_exited"]
